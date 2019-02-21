@@ -76,11 +76,12 @@ WSGI_APPLICATION = 'project_5.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'project5db',
-        'USER': 'postgres',
-        'PASSWORD': 'breslau',
-        'HOST': 'localhost',
+        'NAME': 'd4bsraie2juttf',
+        'USER': 'ohgtupwejcrokm',
+        'PASSWORD': '557bc52b2c5a9421686e1c7550306901967b5f1f0cb8f5c1e3066eef68043ad5',
+        'HOST': 'ec2-54-217-208-105.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
+        'URI': 'postgres://ohgtupwejcrokm:557bc52b2c5a9421686e1c7550306901967b5f1f0cb8f5c1e3066eef68043ad5@ec2-54-217-208-105.eu-west-1.compute.amazonaws.com:5432/d4bsraie2juttf',
     }
 }
 
