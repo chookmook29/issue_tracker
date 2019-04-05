@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+{% for ticket in tickets.all %}
+<h1>{{ ticket.title }}</h1>
+<br>
+<p>{{ ticket.body }}</p>
+{% empty %}
+<p>no tickets</p>
+{% endfor %}
 <p class="paragraph">test</p>
 {% endblock %}
