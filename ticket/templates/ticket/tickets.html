@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for ticket in tickets.all %}
+<h3>{{ ticket.id }}</h3>
 <h1>{{ ticket.title }}</h1>
 <br>
 <p>{{ ticket.body }}</p>
+<a href="{% url 'delete' ticket.id %}">delete</a>
 {% empty %}
 <p>no tickets</p>
 {% endfor %}
