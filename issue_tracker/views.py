@@ -26,4 +26,8 @@ def login_user(request):
 		else:
 			return redirect('login')
 	else:
-		return render(request, 'login.html')
+		return render(request, 'login.html')\
+
+def logout_user(request):
+	logout(request)
+	return redirect('home')
