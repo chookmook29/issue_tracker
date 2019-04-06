@@ -9,5 +9,9 @@
 {% empty %}
 <p>no tickets</p>
 {% endfor %}
-<p class="paragraph">test</p>
+{% for comment in comments.all %}
+<h1>{{ comment.id }}</h1>
+<p class="paragraph">{{ comment.date }}</p>
+<p class="paragraph">{{ comment.text }}</p>
+{% endfor %}
 {% endblock %}
