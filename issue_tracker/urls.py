@@ -13,4 +13,5 @@ urlpatterns = [
     path('ticket/', include('ticket.urls')),
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
+    path('all_tickets/', views.all_tickets, name='all_tickets')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

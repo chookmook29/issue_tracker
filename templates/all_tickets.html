@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container text-center">
+		{% for ticket in all_tickets %}
+			<a href="#">{{ ticket.title }} {{ ticket.progress }} {{ ticket.ticket_type }}<a>
+	    {% endfor %}
+	</div>
+{% endblock %}
