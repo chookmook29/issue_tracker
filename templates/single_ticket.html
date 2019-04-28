@@ -19,6 +19,8 @@
 	{% empty %}
     	<p>No comments here yet :(</p>
 	{% endfor %}
+	{% if user.is_authenticated %}
 		<a href="{% url 'add_comment' pk=ticket.pk %}">Add comment</a>
+	{% endif %}
 	</div>
 {% endblock %}
