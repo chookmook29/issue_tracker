@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Ticket, Comment
 from django.http import HttpResponseRedirect
+from .forms import CommentForm
 
 
 def tickets(request):
@@ -17,5 +18,18 @@ def delete(request, ticket_id):
 
 def show(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    comment = Comment.objects.get(pk=ticket_id)
-    return render(request, 'single_ticket.html', {'ticket': ticket}, {'comment': comment})
+    return render(request, 'single_ticket.html', {'ticket': ticket})
+
+
+def add_comment(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.ticket = ticket
+            comment.save()
+            return redirect('/')
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment.html', {'form': form})
