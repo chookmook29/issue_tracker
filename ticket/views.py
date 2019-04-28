@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Ticket, Comment
-from django.http import HttpResponseRedirect
 from .forms import CommentForm
 
 
@@ -29,7 +28,8 @@ def add_comment(request, pk):
             comment = form.save(commit=False)
             comment.ticket = ticket
             comment.save()
-            return redirect('/')
+            ticket = Ticket.objects.get(pk=pk)
+            return render(request, 'single_ticket.html', {'ticket': ticket})
     else:
         form = CommentForm()
     return render(request, 'add_comment.html', {'form': form})
