@@ -6,7 +6,18 @@
 			<p>{{ ticket.progress }}</p>
 			<p>{{ ticket.ticket_type }}</p>
 			<p>{{ ticket.body }}</p>
-
 	    {% endif %}
+	</div>
+	<div class="container text-center">
+	{% for comment in ticket.comments.all %}
+	    <div class="comment">
+	        <div class="date">{{ comment.created_date }}</div>
+	        <strong>{{ comment.author }}</strong>
+	        <strong>{{ comment.date }}</strong>
+	        <p>{{ comment.text|linebreaks }}</p>
+	    </div>
+	{% empty %}
+    	<p>No comments here yet :(</p>
+	{% endfor %}
 	</div>
 {% endblock %}

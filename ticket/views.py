@@ -17,4 +17,5 @@ def delete(request, ticket_id):
 
 def show(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    return render(request, 'single_ticket.html', {'ticket': ticket})
+    comment = Comment.objects.get(pk=ticket_id)
+    return render(request, 'single_ticket.html', {'ticket': ticket}, {'comment': comment})
