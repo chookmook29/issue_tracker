@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container text-center">
+		{% if ticket %}
+			<h1>{{ ticket.title }}</h1>
+			<p>{{ ticket.progress }}</p>
+			<p>{{ ticket.ticket_type }}</p>
+			<p>{{ ticket.body }}</p>
+
+	    {% endif %}
+	</div>
+{% endblock %}
