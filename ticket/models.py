@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Ticket(models.Model):
@@ -24,6 +25,6 @@ class Ticket(models.Model):
 
 class Comment(models.Model):
     ticket = models.ForeignKey('ticket.Ticket', on_delete=models.CASCADE, related_name='comments', default='1')
-    author = models.CharField(default='me', max_length=200)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
     text = models.TextField()

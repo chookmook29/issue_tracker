@@ -27,6 +27,7 @@ def add_comment(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.ticket = ticket
+            comment.author = request.user
             comment.save()
             ticket = Ticket.objects.get(pk=pk)
             return render(request, 'single_ticket.html', {'ticket': ticket})
