@@ -5,8 +5,7 @@ from .forms import CommentForm
 
 def tickets(request):
     tickets = Ticket.objects.order_by('title')
-    comments = Comment.objects.get()
-    return render(request, 'ticket/tickets.html', {'tickets': tickets}, {'comments': comments})
+    return render(request, 'ticket/tickets.html', {'tickets': tickets})
 
 
 def delete(request, ticket_id):
@@ -17,7 +16,8 @@ def delete(request, ticket_id):
 
 def show(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    return render(request, 'single_ticket.html', {'ticket': ticket})
+    comments = Comment.objects.select_related().filter(ticket_id=ticket_id)
+    return render(request, 'single_ticket.html', {'ticket': ticket, 'comments': comments})
 
 
 def add_comment(request, pk):
