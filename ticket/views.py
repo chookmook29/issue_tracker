@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Ticket, Comment
 from .forms import CommentForm
 
@@ -14,9 +15,12 @@ def delete(request, ticket_id):
     return redirect('/')
 
 
-def show(request, ticket_id):
-    ticket = Ticket.objects.get(pk=ticket_id)
-    comments = Comment.objects.select_related().filter(ticket_id=ticket_id)
+def show(request, pk):
+    ticket = Ticket.objects.get(pk=pk)
+    comment_list = Comment.objects.select_related().filter(ticket_id=pk).order_by('-date')
+    paginator = Paginator(comment_list, 4)
+    page = request.GET.get('page')
+    comments = paginator.get_page(page)
     return render(request, 'single_ticket.html', {'ticket': ticket, 'comments': comments})
 
 
@@ -29,8 +33,7 @@ def add_comment(request, pk):
             comment.ticket = ticket
             comment.author = request.user
             comment.save()
-            ticket = Ticket.objects.get(pk=pk)
-            return render(request, 'single_ticket.html', {'ticket': ticket})
+            return redirect('show_single', pk=pk)
     else:
         form = CommentForm()
     return render(request, 'add_comment.html', {'form': form})
