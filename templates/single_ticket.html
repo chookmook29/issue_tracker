@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-	{% if user.is_authenticated %}
-			<a href="{% url 'add_comment' pk=ticket.pk %}">Add comment</a>
-	{% endif %}
 	<div class="container text-center">
 		{% if ticket %}
 			<h1>{{ ticket.title }}</h1>
@@ -22,24 +19,26 @@
 	{% empty %}
     	<p>No comments here yet :(</p>
 	{% endfor %}
-<div class="pagination">
-    <span class="step-links">
-        {% if comments.has_previous %}
-        	
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ comments.previous_page_number }}">previous</a>
-        {% endif %}
-        	
-        <span class="current">
-            Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
-        </span>
+		<div class="text-center">
+		    <span class="step-links">
+		        {% if comments.has_previous %}
+		        	
+		            <a href="?page=1">&laquo; first</a>
+		            <a href="?page={{ comments.previous_page_number }}">previous</a>
+		        {% endif %}
+		        	
+		        <span class="current">
+		            Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+		        </span>
 
-        {% if comments.has_next %}
-            <a href="?page={{ comments.next_page_number }}">next</a>
-            <a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-			
+		        {% if comments.has_next %}
+		            <a href="?page={{ comments.next_page_number }}">next</a>
+		            <a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
+		        {% endif %}
+		    </span>
+		</div>
+	{% if user.is_authenticated %}
+		<a href="{% url 'add_comment' pk=ticket.pk %}">Add comment</a>
+	{% endif %}
 	</div>
 {% endblock %}
