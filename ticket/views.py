@@ -17,11 +17,13 @@ def delete(request, ticket_id):
 
 def show(request, pk):
     ticket = Ticket.objects.get(pk=pk)
-    comment_list = Comment.objects.select_related().filter(ticket_id=pk).order_by('-date')
+    comment_list = Comment.objects.select_related().filter(
+                   ticket_id=pk).order_by('-date')
     paginator = Paginator(comment_list, 4)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
-    return render(request, 'single_ticket.html', {'ticket': ticket, 'comments': comments})
+    return render(request, 'single_ticket.html', {'ticket': ticket, 'comments':
+                  comments})
 
 
 def add_comment(request, pk):

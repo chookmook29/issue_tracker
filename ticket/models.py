@@ -19,12 +19,17 @@ class Ticket(models.Model):
         (BUG, 'Bug'),
         (FEATURE, 'Feature'),
     )
-    progress = models.CharField(max_length=10, choices=STATUS_CHOICES, default='1')
-    ticket_type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='1')
+    progress = models.CharField(
+               max_length=10, choices=STATUS_CHOICES, default='1')
+    ticket_type = models.CharField(
+                  max_length=10, choices=TYPE_CHOICES, default='1')
 
 
 class Comment(models.Model):
-    ticket = models.ForeignKey('ticket.Ticket', on_delete=models.CASCADE, related_name='comments', default='1')
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ticket = models.ForeignKey(
+             'ticket.Ticket', on_delete=models.CASCADE,
+             related_name='comments', default='1')
+    author = models.ForeignKey(
+             settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
     text = models.TextField()
