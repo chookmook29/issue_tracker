@@ -2,7 +2,21 @@
 {% block content %}
 	<div class="container text-center">
 		{% for ticket in all_tickets %}
-			<a href="{% url 'show_single' ticket.id %}">{{ ticket.title }} {{ ticket.progress }} {{ ticket.ticket_type }}</a><br>
+			<a href="{% url 'show_single' ticket.id %}">{{ ticket.title }}
+				{% if ticket.progress == 'To do' %} 
+					<span style='background-color: thistle'>{{ ticket.progress }}</span>
+				{% elif ticket.progress == 'Doing' %}
+					<span style='background-color: palegreen'>{{ ticket.progress }}</span>
+				{% else %}
+					<span style='background-color: navajowhite'>{{ ticket.progress }}</span>
+				{% endif %}
+				{% if ticket.ticket_type == 'Bug' %}
+					<span style='background-color: pink'>{{ ticket.ticket_type }}</span>
+				{% else %}
+					<span style='background-color: lavender'>{{ ticket.ticket_type }}</span>
+				{% endif %}
+			</a>
+			<br>
 	    {% endfor %}
 	</div>
 {% endblock %}
