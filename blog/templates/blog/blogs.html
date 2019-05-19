@@ -4,10 +4,11 @@
 <div class="container text-center">
 {{ entry.title }}
 <br>
+<img src={{ entry.image.url }}></img>
+<br>
 {{ entry.body }}
 <br>
 {{ entry.pub_date }}
-<img src={{ entry.image.url }}></img>
 </div>
 {% endfor %}
 {% endblock %}
