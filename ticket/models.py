@@ -23,6 +23,8 @@ class Ticket(models.Model):
                max_length=10, choices=STATUS_CHOICES, default='To do')
     ticket_type = models.CharField(
                   max_length=10, choices=TYPE_CHOICES, default='1')
+    author = models.ForeignKey(
+             settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='1')
 
 
 class Comment(models.Model):

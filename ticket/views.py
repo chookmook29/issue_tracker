@@ -45,9 +45,11 @@ def add_ticket(request):
     if request.method == "POST":
         form = TicketForm(request.POST)
         if form.is_valid():
-            form.progress = 'To do'
-            form.save()
-            return render(request, 'index.html')
+            ticket = form.save(commit=False)
+            ticket.progress = 'To do'
+            ticket.author = request.user
+            ticket.save()
+            return redirect('home')
     else:
         form = TicketForm()
     return render(request, 'new_ticket.html', {'form': form})
