@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 	<div class="container text-center">
+		<form method="POST">
+			{% csrf_token %}
+			<label>Title: <input type="text" class="form-control" name="title"></label>
+			<br>
+			<label>Description:</label> <textarea class="form-control" name="body"></textarea>
+			<br>
+			<label><input type="radio" name="ticket_type" value="Bug">Bug</label>
+			<label><input type="radio" name="ticket_type" value="Feature">Feature</label>
+			<br>
+			<input type="submit" name="Submit">
+		</form>
 	</div>
 {% endblock %}

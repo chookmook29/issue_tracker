@@ -20,7 +20,7 @@ class Ticket(models.Model):
         (FEATURE, 'Feature'),
     )
     progress = models.CharField(
-               max_length=10, choices=STATUS_CHOICES, default='1')
+               max_length=10, choices=STATUS_CHOICES, default='To do')
     ticket_type = models.CharField(
                   max_length=10, choices=TYPE_CHOICES, default='1')
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Ticket, Comment
-from .forms import CommentForm
+from .forms import CommentForm, TicketForm
 
 
 def tickets(request):
@@ -42,4 +42,12 @@ def add_comment(request, pk):
 
 
 def add_ticket(request):
-    return render(request, 'new_ticket.html')
+    if request.method == "POST":
+        form = TicketForm(request.POST)
+        if form.is_valid():
+            form.progress = 'To do'
+            form.save()
+            return render(request, 'index.html')
+    else:
+        form = TicketForm()
+    return render(request, 'new_ticket.html', {'form': form})
