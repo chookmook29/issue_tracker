@@ -39,3 +39,7 @@ def add_comment(request, pk):
     else:
         form = CommentForm()
     return render(request, 'add_comment.html', {'form': form})
+
+
+def add_ticket(request):
+    return render(request, 'new_ticket.html')

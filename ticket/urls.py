@@ -6,4 +6,5 @@ urlpatterns = [
     path('delete/<ticket_id>', views.delete, name='delete'),
     path('show/<int:pk>', views.show, name='show_single'),
     path('show/<int:pk>/comment/', views.add_comment, name='add_comment'),
+    path('add', views.add_ticket, name='add_ticket'),
 ]
