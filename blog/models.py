@@ -1,7 +1,11 @@
 from django.db import models
+from django.conf import settings
+
 
 class Blog(models.Model):
-    title =  models.CharField(max_length=255)
-    pub_date =  models.DateTimeField()
+    author = models.ForeignKey(
+             settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='1')
+    title = models.CharField(max_length=255)
+    pub_date = models.DateTimeField()
     body = models.TextField()
-    image = models.ImageField(upload_to='',default='default.jpg')
+    image = models.ImageField(upload_to='', default='default.jpg')
