@@ -21,6 +21,7 @@ class Ticket(models.Model):
     )
     progress = models.CharField(
                max_length=10, choices=STATUS_CHOICES, default='To do')
+    upvotes = models.IntegerField(default='0')
     ticket_type = models.CharField(
                   max_length=10, choices=TYPE_CHOICES, default='1')
     author = models.ForeignKey(
