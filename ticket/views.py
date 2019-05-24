@@ -22,7 +22,7 @@ def show(request, pk):
     paginator = Paginator(comment_list, 4)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
-    return render(request, 'single_ticket.html', {'ticket': ticket, 'comments':
+    return render(request, 'ticket/single_ticket.html', {'ticket': ticket, 'comments':
                   comments})
 
 
@@ -38,7 +38,7 @@ def add_comment(request, pk):
             return redirect('show_single', pk=pk)
     else:
         form = CommentForm()
-    return render(request, 'add_comment.html', {'form': form})
+    return render(request, 'ticket/add_comment.html', {'form': form})
 
 
 def add_ticket(request):
@@ -52,4 +52,4 @@ def add_ticket(request):
             return redirect('home')
     else:
         form = TicketForm()
-    return render(request, 'new_ticket.html', {'form': form})
+    return render(request, 'ticket/new_ticket.html', {'form': form})
