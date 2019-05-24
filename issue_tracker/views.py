@@ -35,5 +35,5 @@ def logout_user(request):
 
 
 def all_tickets(request):
-    all_tickets = Ticket.objects.all
+    all_tickets = Ticket.objects.order_by('upvotes').reverse()
     return render(request, 'all_tickets.html', {'all_tickets': all_tickets})

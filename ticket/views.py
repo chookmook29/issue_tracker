@@ -4,11 +4,6 @@ from .models import Ticket, Comment
 from .forms import CommentForm, TicketForm
 
 
-def tickets(request):
-    tickets = Ticket.objects.order_by('title')
-    return render(request, 'ticket/tickets.html', {'tickets': tickets})
-
-
 def delete(request, ticket_id):
     item = Ticket.objects.get(pk=ticket_id)
     item.delete()
