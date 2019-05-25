@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from django.utils import timezone
 from .models import Ticket, Comment
 from .forms import CommentForm, TicketForm
 
@@ -43,6 +44,7 @@ def add_ticket(request):
             ticket = form.save(commit=False)
             ticket.progress = 'To do'
             ticket.author = request.user
+            ticket.pub_date = timezone.now()
             ticket.save()
             return redirect('home')
     else:

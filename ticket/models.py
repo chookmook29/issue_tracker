@@ -19,6 +19,7 @@ class Ticket(models.Model):
         (BUG, 'Bug'),
         (FEATURE, 'Feature'),
     )
+    pub_date = models.DateTimeField()
     progress = models.CharField(
                max_length=10, choices=STATUS_CHOICES, default='To do')
     upvotes = models.IntegerField(default='0')
