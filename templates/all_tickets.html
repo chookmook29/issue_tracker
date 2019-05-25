@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 	<div class="container text-center">
+		<h1>All Tickets</h1>
 		{% for ticket in all_tickets %}
 			<a href="{% url 'show_single' ticket.id %}">{{ ticket.title }} {{ ticket.upvotes }}
 				{% if ticket.progress == 'To do' %} 
