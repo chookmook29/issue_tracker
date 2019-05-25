@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for entry in entries.all %}
-<div class="container text-center">
-{{ entry.title }}
-<br>
-<img src={{ entry.image.url }}></img>
-<br>
-{{ entry.body }}
-<br>
-{{ entry.pub_date }}
-<br>
-<p>Author: {{ entry.author }}</p>
-{% endfor %}
+	<div class="container text-center">
+		<h3>{{ entry.title }}</h3>
+		<br>
+		<img src={{ entry.image.url }}></img>
+		<br>
+		{{ entry.body }}
+		<br>
+		{{ entry.pub_date }}
+		<br>
+		<p>Author: {{ entry.author }}</p>
+		{% endfor %}
+		<a href="{% url 'home' %}">Back</a>
+	</div>
 {% endblock %}
