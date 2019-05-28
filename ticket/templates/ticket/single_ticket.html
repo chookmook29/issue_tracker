@@ -9,6 +9,14 @@
 			<p>Created by: {{ ticket.author }}</p>
 			<p>Date: {{ ticket.pub_date }}</p>
 			<p>Upvotes: {{ ticket.upvotes }}</p>
+			<h5>Upvote for £5.00</h5>
+			<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		    data-key="{{ key }}"
+		    data-description="Payment"
+		    data-amount="500"
+		    data-currency="gbp"
+		    data-locale="auto">
+			</script>
 	    {% endif %}
 	</div>
 	<div class="container text-center">
