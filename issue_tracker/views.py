@@ -7,14 +7,6 @@ def home(request):
     return render(request, 'index.html')
 
 
-def blog(request):
-    return render(request, 'blog.html')
-
-
-def ticket(request):
-    return render(request, 'ticket.html')
-
-
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
