@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>test</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container text-center">
+		<h3>{{ blog.title }}</h3>
+		<img src={{ blog.image.url }}></img>
+		<br>
+		{{ blog.body }}
+		<br>
+		{{ blog.pub_date }}
+		<br>
+		<p>Author: {{ blog.author }}</p>
+		
+		<a href="{% url 'home' %}">Back</a>
+	</div>
+{% endblock %}
