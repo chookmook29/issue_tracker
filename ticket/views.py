@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.utils import timezone
+from django.conf import settings
 from .models import Ticket, Comment
 from .forms import CommentForm, TicketForm
 
@@ -18,8 +19,9 @@ def show(request, pk):
     paginator = Paginator(comment_list, 4)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
+    key = settings.STRIPE_PUBLISHABLE_KEY
     return render(request, 'ticket/single_ticket.html', {'ticket': ticket, 'comments':
-                  comments})
+                  comments, 'key': key})
 
 
 def add_comment(request, pk):
