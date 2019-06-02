@@ -10,13 +10,16 @@
 			<p>Date: {{ ticket.pub_date }}</p>
 			<p>Upvotes: {{ ticket.upvotes }}</p>
 			<h5>Upvote for £5.00</h5>
-			<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-		    data-key={{ key }}
-		    data-description="Payment"
-		    data-amount="500"
-		    data-currency="gbp"
-		    data-locale="auto">
-			</script>
+			<form action="{% url 'checkout' ticket.id %}" method="post">
+	  			{% csrf_token %}
+				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			    data-key='pk_test_OaQVMUe9JsFRdrgepZ3ngbeR008K5iXPDC'
+			    data-description="Payment"
+			    data-amount="500"
+			    data-currency="gbp"
+			    data-locale="auto">
+				</script>
+			</form>
 	    {% endif %}
 	</div>
 	<div class="container text-center">

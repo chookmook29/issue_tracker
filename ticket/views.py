@@ -13,6 +13,8 @@ def delete(request, ticket_id):
 
 
 def show(request, pk):
+    if request.method == "POST":
+        return redirect('checkout', pk=pk)
     ticket = Ticket.objects.get(pk=pk)
     comment_list = Comment.objects.select_related().filter(
                    ticket_id=pk).order_by('-date')
