@@ -5,3 +5,5 @@ __pycache__/
 project_5/__pycache__/
 # Other
 .DS_Store
+# Django static files collection
+staticfiles/
