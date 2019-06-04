@@ -9,7 +9,16 @@
 		{{ blog.pub_date }}
 		<br>
 		<p>Author: {{ blog.author }}</p>
-		
+	{% for comment in comment_list %}
+	    <div class="comment">
+	        <div class="date">{{ comment.created_date }}</div>
+	        <strong>{{ comment.author }}</strong>
+	        <strong>{{ comment.date }}</strong>
+	        <p>{{ comment.text|linebreaks }}</p>
+	    </div>
+	{% empty %}
+    	<p>No comments here yet :(</p>
+	{% endfor %}
 		<a href="{% url 'home' %}">Back</a>
 	</div>
 {% endblock %}
