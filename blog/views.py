@@ -11,4 +11,4 @@ def single_blog(request, pk):
     blog = Blog.objects.get(pk=pk)
     comment_list = Blog_comment.objects.select_related().filter(
                    ticket_id=pk).order_by('-date')
-    return render(request, 'single_blog.html', {'blog': blog, 'comment_list': comment_list})
+    return render(request, 'single_entry.html', {'blog': blog, 'comment_list': comment_list})
