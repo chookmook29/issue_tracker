@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from .models import Blog, Blog_comment
 
 
@@ -11,4 +12,7 @@ def single_blog(request, pk):
     blog = Blog.objects.get(pk=pk)
     comment_list = Blog_comment.objects.select_related().filter(
                    ticket_id=pk).order_by('-date')
-    return render(request, 'single_entry.html', {'blog': blog, 'comment_list': comment_list})
+    paginator = Paginator(comment_list, 4)
+    page = request.GET.get('page')
+    comments = paginator.get_page(page)
+    return render(request, 'single_entry.html', {'blog': blog, 'comments': comments})

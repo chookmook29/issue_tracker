@@ -9,7 +9,7 @@
 		{{ blog.pub_date }}
 		<br>
 		<p>Author: {{ blog.author }}</p>
-	{% for comment in comment_list %}
+	{% for comment in comments %}
 	    <div class="comment">
 	        <div class="date">{{ comment.created_date }}</div>
 	        <strong>{{ comment.author }}</strong>
@@ -19,6 +19,24 @@
 	{% empty %}
     	<p>No comments here yet :(</p>
 	{% endfor %}
+		<div class="text-center">
+		    <span class="step-links">
+		        {% if comments.has_previous %}
+		        	
+		            <a href="?page=1">&laquo; first</a>
+		            <a href="?page={{ comments.previous_page_number }}">previous</a>
+		        {% endif %}
+		        	
+		        <span class="current">
+		            Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+		        </span>
+
+		        {% if comments.has_next %}
+		            <a href="?page={{ comments.next_page_number }}">next</a>
+		            <a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
+		        {% endif %}
+		    </span>
+		</div>
 		<a href="{% url 'home' %}">Back</a>
 	</div>
 {% endblock %}
