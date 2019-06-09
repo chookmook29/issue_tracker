@@ -9,7 +9,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
-<body>
+<body class="d-flex flex-column">
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="{% url 'home' %}">Issue Tracker</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +35,11 @@
 			</ul>
 		</div>
 	</nav>
+	<div id="page-content">
 {% block content %}
 {% endblock %}
-	<div class="container text-center">
+	</div>
+	<div id="sticky-footer" class="container text-center">
 		<p class="paragraph text-center">&#169; {% now 'Y' %}</p>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
