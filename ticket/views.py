@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.conf import settings
+from django.contrib import messages
 from .models import Ticket, Comment
 from .forms import CommentForm, TicketForm
 
@@ -9,6 +10,7 @@ from .forms import CommentForm, TicketForm
 def delete(request, ticket_id):
     item = Ticket.objects.get(pk=ticket_id)
     item.delete()
+    messages.success(request, ('Ticket deleted!'))
     return redirect('/')
 
 
@@ -35,6 +37,7 @@ def add_comment(request, pk):
             comment.ticket = ticket
             comment.author = request.user
             comment.save()
+            messages.success(request, ('Comment added!'))
             return redirect('show_single', pk=pk)
     else:
         form = CommentForm()
@@ -50,6 +53,7 @@ def add_ticket(request):
             ticket.author = request.user
             ticket.pub_date = timezone.now()
             ticket.save()
+            messages.success(request, ('Ticket added!'))
             return redirect('home')
     else:
         form = TicketForm()
