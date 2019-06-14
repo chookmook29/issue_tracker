@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from ticket.models import Ticket
 
@@ -25,7 +26,18 @@ def login_user(request):
 
 
 def sign_up(request):
-    return render(request, 'sign_up.html')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'sign_up.html', {'form': form})
 
 
 def logout_user(request):
