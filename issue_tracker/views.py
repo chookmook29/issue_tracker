@@ -34,6 +34,7 @@ def sign_up(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
+            messages.success(request, ('You successfully signed up!'))
             return redirect('home')
     else:
         form = UserCreationForm()
