@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'ticket.apps.TicketsConfig',
     'blog.apps.BlogConfig',
     'checkout.apps.CheckoutConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from users.forms import CustomUserCreationForm
 from ticket.models import Ticket
 
 
@@ -27,7 +27,7 @@ def login_user(request):
 
 def sign_up(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -37,7 +37,7 @@ def sign_up(request):
             messages.success(request, ('You successfully signed up!'))
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'sign_up.html', {'form': form})
 
 
