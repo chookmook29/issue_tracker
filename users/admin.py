@@ -18,6 +18,7 @@ class CustomUserAdmin(UserAdmin):
         (('User'), {'fields': ('username', 'email')}),
         (('Personal'), {'fields': ('first_name', 'last_name')}),
         (('Contributions'), {'fields': ('contributions',)}),
+        (('Comments amount'), {'fields': ('amount_comments',)}),
     )
 
 
