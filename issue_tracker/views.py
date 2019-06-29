@@ -3,10 +3,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from users.forms import CustomUserCreationForm
 from ticket.models import Ticket
+from users.models import CustomUser
 
 
 def home(request):
-    return render(request, 'index.html')
+    dataset = CustomUser.objects.all().order_by('-amount_comments')[:3]
+    return render(request, 'index.html', {'dataset': dataset})
 
 
 def login_user(request):

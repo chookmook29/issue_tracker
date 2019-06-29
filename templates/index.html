@@ -5,4 +5,12 @@
 		<a href="{% url 'all_tickets' %}">All tickets</a>
 		<a href="{% url 'blogs' %}">Blog</a>
 	</div>
+	<script type="text/javascript">
+		var dataset = [{% for data in dataset %}["{{ data.username }}", {{ data.amount_comments }}],{% endfor %}];
+		d3.select("body").selectAll("p")
+			.data(dataset)
+			.enter()
+			.append("p")
+			.text(function(d) { return d[0]; });
+	</script>
 {% endblock %}
