@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from .models import Ticket, Comment
 from .forms import CommentForm, TicketForm
+from users.models import CustomUser
 
 
 def delete(request, ticket_id):
@@ -37,6 +38,9 @@ def add_comment(request, pk):
             comment.ticket = ticket
             comment.author = request.user
             comment.save()
+            user = CustomUser.objects.get(username=request.user)
+            user.amount_comments += 1
+            user.save()
             messages.success(request, ('Comment added!'))
             return redirect('show_single', pk=pk)
     else:
