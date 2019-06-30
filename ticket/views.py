@@ -17,6 +17,9 @@ def delete(request, ticket_id):
 
 def show(request, pk):
     if request.method == "POST":
+        user = CustomUser.objects.get(username=request.user)
+        user.contributions += 5
+        user.save()
         return redirect('checkout', pk=pk)
     ticket = Ticket.objects.get(pk=pk)
     comment_list = Comment.objects.select_related().filter(
