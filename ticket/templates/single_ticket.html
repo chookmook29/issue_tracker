@@ -10,7 +10,7 @@
 			<p>Date: {{ ticket.pub_date }}</p>
 			<p>Upvotes: {{ ticket.upvotes }}</p>
 			<h5>Upvote for £5.00</h5>
-			<form action="{% url 'checkout' ticket.id %}" method="post">
+			<form action="{% url 'show_single' ticket.id %}" method="post">
 	  			{% csrf_token %}
 				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 			    data-key={{ key }}
