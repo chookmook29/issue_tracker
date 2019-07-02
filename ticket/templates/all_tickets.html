@@ -3,7 +3,7 @@
 	<div class="container text-center">
 		<h1>All Tickets</h1>
 		{% for ticket in all_tickets %}
-			<a href="{% url 'show_single' ticket.id %}">{{ ticket.title }} 
+			<a href="{% url 'show_single' ticket.id %}" style="font-size:1{{ ticket.upvotes }}px;">{{ ticket.title }} 
 				{% if ticket.progress == 'To do' %} 
 					<span style='background-color: thistle'>{{ ticket.progress }}</span>
 				{% elif ticket.progress == 'Doing' %}
