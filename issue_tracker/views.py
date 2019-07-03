@@ -7,7 +7,7 @@ from users.models import CustomUser
 
 
 def home(request):
-    dataset = CustomUser.objects.all().order_by('-amount_comments')[:3]
+    dataset = CustomUser.objects.all().order_by('-amount_comments')[:5]
     return render(request, 'index.html', {'dataset': dataset})
 
 
