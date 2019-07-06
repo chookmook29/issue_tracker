@@ -42,7 +42,7 @@ def add_comment(request, pk):
             user.amount_comments += 1
             user.save()
             messages.success(request, ('Comment added!'))
-            return redirect('show_single', pk=pk)
+            return redirect('show', pk=pk)
     else:
         form = CommentForm()
     return render(request, 'add_comment.html', {'form': form})

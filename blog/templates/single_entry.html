@@ -37,6 +37,9 @@
 		        {% endif %}
 		    </span>
 		</div>
+		{% if user.is_authenticated %}
+		<a href="{% url 'blog_comment' pk=blog.pk %}">Add comment</a>
+		{% endif %}
 		<a href="{% url 'home' %}">Back</a>
 	</div>
 {% endblock %}
