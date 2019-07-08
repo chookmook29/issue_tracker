@@ -1,25 +1,21 @@
+# Needed for Heroku deployment
 import os
-# Configure Django App for Heroku.
+# Configuration for Heroku deployment, essential/otherwise won't deploy
 import django_heroku
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Secret key as environmental variable for security
 SECRET_KEY = 'l18=*-$k-x!lu)x+^lt8k3cm=0j3mm+ugoqmi*e0l2h49bv)m%'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Switched off in production
 DEBUG = True
 
+# Left empty because it doesn't affect Heroku deployment
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
+# App configuration feature used, needed if several apps in the same module
 INSTALLED_APPS = [
     'ticket.apps.TicketsConfig',
     'blog.apps.BlogConfig',
@@ -32,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
+# No extra middleware added
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -64,9 +60,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'issue_tracker.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+# Database details as environmental variables for security
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -79,9 +73,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -97,14 +88,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# User needed customization hence new model - Custom User
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
+# Changed to local language code to be more accurate
 LANGUAGE_CODE = 'en-gb'
-
+# Changed to UK from US to prevent wrong timezone in comments timestamps
 TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
@@ -114,9 +103,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
+# Media folder created for users images uploads
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -127,7 +114,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+# Stripe details as environmental variables for security reasons
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_S')
+
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_P')
 
+# For Django-Heroku activation process, suppose to be at the bottom of the file
 django_heroku.settings(locals())
