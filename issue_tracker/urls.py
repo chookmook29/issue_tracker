@@ -14,4 +14,5 @@ urlpatterns = [
     path('sign_up', views.sign_up, name='sign_up'),
     path('logout/', views.logout_user, name='logout'),
     path('all_tickets/', views.all_tickets, name='all_tickets')
+    # Only for development and debug, user-uploaded media files from MEDIA_ROOT
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
