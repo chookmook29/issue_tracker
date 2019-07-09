@@ -19,11 +19,13 @@ def show(request, pk):
     if request.method == "POST":
         return redirect('checkout', pk=pk)
     ticket = Ticket.objects.get(pk=pk)
+    # comments paginated with paginator module for simplicity
     comment_list = Comment.objects.select_related().filter(
                    ticket_id=pk).order_by('-date')
     paginator = Paginator(comment_list, 4)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
+    # Environmental variable for safety
     key = settings.STRIPE_PUBLISHABLE_KEY
     return render(request, 'single_ticket.html', {'ticket': ticket, 'comments':
                   comments, 'key': key})

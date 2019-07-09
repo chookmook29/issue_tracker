@@ -5,6 +5,7 @@ from django.conf import settings
 class Ticket(models.Model):
     title = models.CharField(max_length=50)
     body = models.TextField()
+    # Two sets of constants for choice fields, needed for custom fields
     TO_DO = 'To do'
     DOING = 'Doing'
     DONE = 'Done'
@@ -22,6 +23,7 @@ class Ticket(models.Model):
     pub_date = models.DateTimeField()
     progress = models.CharField(
                max_length=10, choices=STATUS_CHOICES, default='To do')
+    # Defaults needed for database migrations, otherwise errors
     upvotes = models.IntegerField(default='0')
     ticket_type = models.CharField(
                   max_length=10, choices=TYPE_CHOICES, default='1')

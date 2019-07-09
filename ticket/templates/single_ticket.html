@@ -60,6 +60,8 @@
 		<a href="{% url 'add_comment' pk=ticket.pk %}">Add comment</a>
 	{% endif %}
 	<br>
+	<a href="{% url 'delete' ticket_id=ticket.pk %}">Delete</a>
+	<br>
 	<a href="{% url 'home' %}">Back</a>
 	</div>
 {% endblock %}
