@@ -2,6 +2,7 @@ from django import forms
 from .models import Comment, Ticket
 
 
+# Comment and ticket forms extended from default class
 class CommentForm(forms.ModelForm):
 
     class Meta:

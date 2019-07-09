@@ -11,6 +11,7 @@ from users.models import CustomUser
 def delete(request, ticket_id):
     item = Ticket.objects.get(pk=ticket_id)
     item.delete()
+    # messages from django.contrib improve UX
     messages.success(request, ('Ticket deleted!'))
     return redirect('/')
 
@@ -35,12 +36,14 @@ def add_comment(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
+        # Standard attributes and methods when posting
         if form.is_valid():
             comment = form.save(commit=False)
             comment.ticket = ticket
             comment.author = request.user
             comment.save()
             user = CustomUser.objects.get(username=request.user)
+            # Comments amount needs counting to measure user activity
             user.amount_comments += 1
             user.save()
             messages.success(request, ('Comment added!'))

@@ -13,6 +13,7 @@
 	    {% endif %}
 	    {% if ticket.ticket_type == 'Feature' %}
 			<h5>Upvote for £5.00</h5>
+			<!-- For better user experience checkout.js library used -->
 			<form action="{% url 'show_single' ticket.id %}" method="post">
 	  			{% csrf_token %}
 				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -41,7 +42,7 @@
 		<div class="text-center">
 		    <span class="step-links">
 		        {% if comments.has_previous %}
-		        	
+		        <!-- Paginator settings -->
 		            <a href="?page=1">&laquo; first</a>
 		            <a href="?page={{ comments.previous_page_number }}">previous</a>
 		        {% endif %}
@@ -57,11 +58,15 @@
 		    </span>
 		</div>
 	{% if user.is_authenticated %}
+	<!-- Comments only for registered users -->
 		<a href="{% url 'add_comment' pk=ticket.pk %}">Add comment</a>
 	{% endif %}
 	<br>
-	<a href="{% url 'delete' ticket_id=ticket.pk %}">Delete</a>
-	<br>
+	<!-- If statement below prevents users from deleting someone else's tickets-->
+	{% if user == ticket.author %}
+		<a href="{% url 'delete' ticket_id=ticket.pk %}">Delete</a>
+		<br>
+	{% endif %}
 	<a href="{% url 'home' %}">Back</a>
 	</div>
 {% endblock %}
