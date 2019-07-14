@@ -1,7 +1,5 @@
 # Needed for Heroku deployment
 import os
-# Configuration for Heroku deployment, essential/otherwise won't deploy
-import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -136,6 +134,3 @@ MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_S')
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_P')
-
-# For Django-Heroku activation process, suppose to be at the bottom of the file
-django_heroku.settings(locals())
