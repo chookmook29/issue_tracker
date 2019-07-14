@@ -106,9 +106,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Media folder created for users images uploads
-STATIC_URL = '/static/'
-
 # AWS settings
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -123,7 +120,10 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_DEFAULT_ACL = None
 
-# Extra places for collectstatic to find static files
+# Base URL location from which static files will be served
+STATIC_URL = '/static/'
+
+# Additional directories that collectstatic tool should search for static files
 STATICFILES_DIRS = (
             os.path.join(BASE_DIR, 'static'),
 )
