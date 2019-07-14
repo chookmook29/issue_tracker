@@ -3,7 +3,7 @@
 	<div class="container text-center">
 		<h1>All Tickets</h1>
 		{% for ticket in all_tickets %}
-			<h3 class="text-right">&#8679;{{ ticket.upvotes }}</h3>
+			<h3 class="text-right"><span class="upvote">&#8679;</span>{{ ticket.upvotes }}</h3>
 			<div class="card text-center">
 				<div class="card-header">
 					{% if ticket.ticket_type == 'Bug' %}
