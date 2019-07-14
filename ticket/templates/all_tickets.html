@@ -3,6 +3,7 @@
 	<div class="container text-center">
 		<h1>All Tickets</h1>
 		{% for ticket in all_tickets %}
+			<h3 class="text-right">&#8679;{{ ticket.upvotes }}</h3>
 			<div class="card text-center">
 				<div class="card-header">
 					{% if ticket.ticket_type == 'Bug' %}
@@ -28,7 +29,6 @@
 					{% endif %}
 				</div>
 				<div class="card-body">
-					<h5 class="text-right">&#8679;{{ ticket.upvotes }}</h5>
 					<h5 class="card-title">
 					{{ ticket.title }}</h5>
 					<p class="card-text">{{ ticket.body }}</p>
