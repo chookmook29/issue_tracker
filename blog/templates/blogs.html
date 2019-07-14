@@ -2,7 +2,16 @@
 {% block content %}
 	<div class="container text-center">
 {% for blog in all_blogs.all %}
-		<a href="{% url 'single_blog' blog.id %}">{{ blog.title }}</a>
+		<div class="card">
+		  <img class="card-img-top" src="{{ blog.image.url }}" alt="Card image cap">
+		  <div class="card-body">
+		    <h5 class="card-title">{{ blog.title }}</h5>
+		    <p class="card-text">{{ blog.body }}</p>
+		    <a href="{% url 'single_blog' blog.id %}" class="btn btn-primary">Read More</a>
+		  </div>
+		</div>
+
+		<!--<a href="{% url 'single_blog' blog.id %}">{{ blog.title }}</a>
 		<br>
 		<img src={{ blog.image.url }}></img>
 		<br>
@@ -10,7 +19,7 @@
 		<br>
 		{{ blog.pub_date }}
 		<br>
-		<p>Author: {{ blog.author }}</p>
+		<p>Author: {{ blog.author }}</p>-->
 {% endfor %}
 		<a href="{% url 'home' %}">Back</a>
 	</div>
