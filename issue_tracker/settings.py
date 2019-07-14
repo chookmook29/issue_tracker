@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'crispy_forms',
 ]
 # No extra middleware added
 MIDDLEWARE = [
@@ -130,9 +131,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
+# Improve form templates look
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Stripe details as environmental variables for security reasons
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_S')
-
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_P')
 
 # For Django-Heroku activation process, suppose to be at the bottom of the file

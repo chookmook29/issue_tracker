@@ -7,7 +7,7 @@
  		  {% if form.errors %}
  		  		<p>Errors</p>
  		  {% endif %}
-          {{ form }}
+          {{ form|crispy }}
           <div class="text-center">
           	<button type="submit" class="btn btn-primary">Sign Up</button>
       	  </div>
