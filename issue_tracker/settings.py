@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l18=*-$k-x!lu)x+^lt8k3cm=0j3mm+ugoqmi*e0l2h49bv)m%'
 
 # Switched off in production
-DEBUG = True
+DEBUG = False
 
 # Left empty because it doesn't affect Heroku deployment
 ALLOWED_HOSTS = []
@@ -37,6 +37,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Simplified static file serving.
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'issue_tracker.urls'
@@ -106,9 +108,10 @@ USE_TZ = True
 # Media folder created for users images uploads
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
+# Extra places for collectstatic to find static files
+STATICFILES_DIRS = (
             os.path.join(BASE_DIR, 'static'),
-        ]
+)
 # MEDIA_ROOT used for development mode
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
