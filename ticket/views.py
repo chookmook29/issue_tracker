@@ -67,3 +67,9 @@ def add_ticket(request):
     else:
         form = TicketForm()
     return render(request, 'new_ticket.html', {'form': form})
+
+
+def all_tickets(request):
+    """ Reverse order to make most upvoted ticket appear on top"""
+    all_tickets = Ticket.objects.order_by('upvotes').reverse()
+    return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
