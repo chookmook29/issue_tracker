@@ -27,13 +27,32 @@ body {
 	background: url("/static/img/background.jpg");
 	background-size: cover;
 }
+.btn-ticket {
+	border-color: black;
+}
+.card-custom {
+	margin-bottom: 5%;
+}
 .upvote {
-	color: orangered;
+	color: #ffc107;
+	padding: 0.2rem;
 }
 .small-img {
 	width: 50%;
     margin-left: 25%;
     margin-top: 5%;
+}
+.ticket-bottom {
+	margin-bottom: 0;
+	text-align: left;
+}
+.status {
+	float: left;
+	margin: 0 0.2rem 0 0.2rem;
+	padding: 0.2rem;
+	font-size: 0.7rem;
+	border-radius: 0.3rem;
+	color: white;
 }
 #sticky-footer {
 	flex-shrink: none;

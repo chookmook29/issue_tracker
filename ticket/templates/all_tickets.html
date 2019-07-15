@@ -2,43 +2,44 @@
 {% block content %}
 	<div class="container text-center">
 		<h1>All Tickets</h1>
+		<div class="row">
 		{% for ticket in all_tickets %}
-			<h3 class="text-right"><span class="upvote">&#8679;</span>{{ ticket.upvotes }}</h3>
-			<div class="card text-center">
+			<div class="card text-center card-custom">
 				<div class="card-header">
 					{% if ticket.ticket_type == 'Bug' %}
-						<span style='background-color: pink'>BUG</span>
+						<span class="status" style="background-color: #F9899C">BUG</span>
 						{% if ticket.progress == 'To do' %} 
 					<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-						<span style='background-color: thistle'>{{ ticket.progress }}</span>
+						<span class="status" style="background-color: #ec5151">ToDo</span>
 					{% elif ticket.progress == 'Doing' %}
-						<span style='background-color: palegreen'>{{ ticket.progress }}</span>
+						<span class="status" style='background-color: #ffc365'>{{ ticket.progress }}</span>
 					{% else %}
-						<span style='background-color: navajowhite'>{{ ticket.progress }}</span>
+						<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
 					{% endif %}
 					{% else %}
-						<span style='background-color: lavender'>FEATURE</span>
+						<span class="status" style="background-color: #9292ff">FEATURE</span>
 						{% if ticket.progress == 'To do' %} 
 					<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-						<span style='background-color: thistle'>{{ ticket.progress }}</span>
+						<span class="status" style="background-color: #ec5151">ToDo</span>
 					{% elif ticket.progress == 'Doing' %}
-						<span style='background-color: palegreen'>{{ ticket.progress }}</span>
+						<span class="status" style="background-color: #ffc365">{{ ticket.progress }}</span>
 					{% else %}
-						<span style='background-color: navajowhite'>{{ ticket.progress }}</span>
+						<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
 					{% endif %}
 					{% endif %}
 				</div>
 				<div class="card-body">
 					<h5 class="card-title">
-					{{ ticket.title }}</h5>
+					{{ ticket.title|title }}</h5>
 					<p class="card-text">{{ ticket.body }}</p>
-					<a href="{% url 'show_single' ticket.id %}" class="btn btn-primary">View details</a>
+					<a href="{% url 'show_single' ticket.id %}" class="btn btn-ticket">View details</a>
 				</div>
 				<div class="card-footer text-muted">
-				{{ ticket.pub_date }}
+					<p class="ticket-bottom"><span class="upvote">&#9733;</span>{{ ticket.upvotes }}<span class="float-right">Posted {{ ticket.pub_date|timesince }} ago</span></p>
 				</div>
 			</div>
 	    {% endfor %}
+	    </div>
 	    <a href="{% url 'home' %}"  class="btn btn-primary my-2">Back</a>
 	</div>
 {% endblock %}
