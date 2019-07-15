@@ -30,6 +30,11 @@ body {
 .upvote {
 	color: orangered;
 }
+.small-img {
+	width: 50%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
 #sticky-footer {
 	flex-shrink: none;
 }
