@@ -31,11 +31,17 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav ml-auto">
 			  {% if user.is_authenticated %}
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+			  		<li class="nav-item active">
+						<a class="nav-link" href="{% url 'all_tickets' %}">All Tickets</a>
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" href="{% url 'add_ticket' %}">New Ticket</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'blogs' %}">Blog</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 					</li>
 				{% else %}
 					<li class="nav-item active">
