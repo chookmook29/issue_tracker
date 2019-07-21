@@ -31,7 +31,7 @@
 				<div class="card-body mx-4 my-4">
 					<h5 class="card-title">
 					{{ ticket.title|title }}</h5>
-					<p class="card-text my-4">{{ ticket.body }}</p>
+					<p class="card-text my-4">{{ ticket.body|truncatewords:15  }}</p>
 					<a href="{% url 'show_single' ticket.id %}" class="btn btn-ticket">View details</a>
 				</div>
 				<div class="card-footer text-muted">
