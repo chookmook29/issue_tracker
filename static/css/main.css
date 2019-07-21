@@ -24,8 +24,11 @@ html {
 body {
 	font-family: 'Roboto';
 	height: 100%;
-	background: url("/static/img/background.jpg");
-	background-size: cover;
+	background: url("/static/img/background.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 .btn-ticket {
 	border-color: black;
