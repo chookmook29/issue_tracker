@@ -4,7 +4,7 @@
 		<h1>All Tickets</h1>
 		<div class="row">
 		{% for ticket in all_tickets %}
-			<div class="card text-center card-custom">
+			<div class="card text-center mb-5 w-100">
 				<div class="card-header">
 					{% if ticket.ticket_type == 'Bug' %}
 						<span class="status" style="background-color: #F9899C">BUG</span>
