@@ -38,8 +38,8 @@
 		    </span>
 		</div>
 		{% if user.is_authenticated %}
-		<a href="{% url 'blog_comment' pk=blog.pk %}">Add comment</a>
+		<a href="{% url 'blog_comment' pk=blog.pk %}" class="btn btn-ticket my-2">Add comment</a>
 		{% endif %}
-		<a href="{% url 'home' %}">Back</a>
+		<a href="{% url 'home' %}"  class="btn btn-ticket my-2">Back</a>
 	</div>
 {% endblock %}

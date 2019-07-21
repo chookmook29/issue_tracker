@@ -32,7 +32,7 @@
 			<p>Created by: {{ ticket.author }}</p>
 			{% if user.is_authenticated %}
 			<!-- Comments only for registered users -->
-			<a href="{% url 'add_comment' pk=ticket.pk %}" class="btn btn-primary my-2">Add comment</a>
+			<a href="{% url 'add_comment' pk=ticket.pk %}" class="btn btn-ticket my-2">Add comment</a>
 			{% endif %}
 			<p>Upvotes: {{ ticket.upvotes }}</p>
 			{% if ticket.ticket_type == 'Feature' %}
@@ -89,7 +89,7 @@
 			
 			<!-- If statement below prevents users from deleting someone else's tickets-->
 			{% if user.is_staff == True %}
-			<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-primary my-2">Delete</a>
+			<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket my-2">Delete</a>
 			{% endif %}
 			<a href="{% url 'all_tickets' %}" class="btn btn-ticket text-center my-2">Back</a>
 			</div>
