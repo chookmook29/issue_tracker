@@ -10,11 +10,11 @@
  		  {% endif %}
           {{ form|crispy }}
           <div class="text-center">
-          	<button type="submit" class="btn btn-primary">Sign Up</button>
+          	<button type="submit" class="btn btn-ticket">Sign Up</button>
       	  </div>
         </form>
     </div>
     <div class="text-center">
-      <a href="{% url 'home' %}">Back</a>
+      <a href="{% url 'home' %}" class="btn btn-ticket text-center my-2">Back</a>
     </div>
 {% endblock %}
