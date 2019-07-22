@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from users.forms import CustomUserCreationForm
+from users.forms import CustomUserCreationForm, CustomUserChangeForm
+from users.models import CustomUser
 
 
 def login_user(request):
@@ -43,4 +44,22 @@ def logout_user(request):
     # Simple logout using django.contrib.auth module
     logout(request)
     messages.success(request, ('User logged out!'))
-    return redirect('home')# Create your views here.
+    return redirect('home')
+
+
+def change_details(request):
+    if request.method == 'POST':
+        # CustomUserCreationForm necessary if CustomUser's being used
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            # cleaned_data attribute necessary for is_valid() method
+            email = form.cleaned_data['email']
+            user = authenticate(email=email)
+            login(request, user)
+            messages.success(request, ('You successfully changed your details!'))
+            return redirect('home')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    user_account = CustomUser.objects.get(username=request.user)
+    return render(request, 'change.html', {'form': form, 'user_account': user_account})
