@@ -10,8 +10,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('ticket/', include('ticket.urls')),
     path('checkout/', include('checkout.urls')),
-    path('login/', views.login_user, name='login'),
-    path('sign_up', views.sign_up, name='sign_up'),
-    path('logout/', views.logout_user, name='logout'),
+    path('users/', include('users.urls')),
     # Only for development and debug, user-uploaded media files from MEDIA_ROOT
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
