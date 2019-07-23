@@ -60,3 +60,6 @@ body {
 #page-content {
 	flex: 1 0 auto;
 }
+#div_id_password {
+	display: none;
+}
