@@ -52,6 +52,8 @@
 				}
 	</script>
 	<script type="text/javascript">
+		var x = 0;
+		{% for data in dataset %}x += 1;{% endfor %}
 		// set the dimensions and margins of the graph
 		var width = 450
 		    height = 450
@@ -69,12 +71,13 @@
 		    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 		// Create dummy data
-		var data = { {% for data in dataset %}{{ data.username }}: 2{{ data.contributions }},{% endfor %} }
+		var data = {{% for data in dataset %}{{ data.username }}: 2{{ data.contributions }},{% endfor %}}
 
-		// set the color scale
+		// Using Django's templating, colour range is being generated based on amount of data entries
 		var color = d3.scaleOrdinal()
 		  .domain(data)
-		  .range([('#'+(Math.random()*0xFFFFFF<<0).toString(16)), ('#'+(Math.random()*0xFFFFFF<<0).toString(16)), ('#'+(Math.random()*0xFFFFFF<<0).toString(16)), ('#'+(Math.random()*0xFFFFFF<<0).toString(16)), ('#'+(Math.random()*0xFFFFFF<<0).toString(16))])
+		  .range([ {% for data in dataset %}('#'+(Math.random()*0xFFFFFF<<0).toString(16)),{% endfor %}]);
+
 
 		// Compute the position of each group on the pie:
 		var pie = d3.pie()
