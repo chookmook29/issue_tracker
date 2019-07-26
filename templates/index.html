@@ -6,7 +6,7 @@
 	<div id="my_dataviz2" class="col-6"></div>
 	<script type="text/javascript">
 		// List of words
-		var myWords = [{% for data in dataset %}{word: "{{ data.username }}", size: "3{{ data.amount_comments }}"},{% endfor %}];
+		var usernames = [{% for data in dataset %}{username: "{{ data.username }}", size: "3{{ data.amount_comments }}"},{% endfor %}];
 
 		// set the dimensions and margins of the graph
 		var margin = {top: 10, right: 10, bottom: 10, left: 10},
@@ -25,7 +25,7 @@
 		// Wordcloud features that are different from one word to the other must be here
 		var layout = d3.layout.cloud()
 		  .size([width, height])
-		  .words(myWords.map(function(d) { return {text: d.word, size:d.size}; }))
+		  .words(usernames.map(function(d) { return {text: d.username, size:d.size}; }))
 		  .padding(5)        //space between words
 		  .rotate(function() { return ~~(Math.random() * 2) * 90; })
 		  .fontSize(function(d) { return d.size; })      // font size of words
@@ -70,8 +70,8 @@
 		  .append("g")
 		    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-		// Create dummy data
-		var data = {{% for data in dataset %}{{ data.username }}: 2{{ data.contributions }},{% endfor %}}
+		// Django template engine to generate some array entries, made larger by adding digits
+		var data = { {% for data in dataset %}{{ data.username }}: 2{{ data.contributions }},{% endfor %} }
 
 		// Using Django's templating, colour range is being generated based on amount of data entries
 		var color = d3.scaleOrdinal()
