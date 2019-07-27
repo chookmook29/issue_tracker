@@ -9,3 +9,36 @@ To offer transparency there is a page that contains some graphs showing how many
 
 ##Known Issues
 Password form field at account details still being displayed even after explicitly ordered not to in custom form class. Temporary work-around it is to add hidden status to that field block in css rules file.
+
+## Technologies Used
+
+- HTML and CSS
+    - project uses **HTML** and **CSS** to build webpages.
+- [Bootstrap 4](https://getbootstrap.com/)
+    - The project uses some **Bootstrap** elements for more responsive layout.
+- [Python](https://www.python.org/)
+    - Back-end was written in **Python** .
+    - **vnev** library was used in development of the project.
+- [JavaScript](https://www.javascript.com/)
+    - This project uses **JavaScript** for interactive functionality of the application.
+- [Django](https://www.djangoproject.com/)
+    - The project was built **django** micro-framework due to its simplicity.
+    - **flask.session** was used to store all variables values. 
+- [D3.js](https://d3js.org/)
+    - Used for creating charts.
+- [unit-test](https://docs.python.org/3/library/unittest.html)
+    - Used for automated testing.
+- [Balsamiq](https://balsamiq.com/)
+    - Before development started, **Balsamiq** was used for wireframes.
+- [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/)
+    - Adjusting elements of project's frontend.
+- [PostgreSQL](https://www.postgresql.org/)
+    - Postgres database hosted by AWS used by Heroku.
+- [PEP8](http://pep8online.com/)
+    - Used to check python syntax errors.
+- [JSlint](https://www.jslint.com/)
+    - Used to check JS snippet.
+- [CSSlint](http://csslint.net/)
+    - Check for CSS errors.
+- [Font Awesome](https://fontawesome.com/)
+    - Icons for the application.
