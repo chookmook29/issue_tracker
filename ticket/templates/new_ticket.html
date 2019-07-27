@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 	<div class="container text-center">
-		<form method="POST">
-			{% csrf_token %}
-			<label>Title: <input type="text" class="form-control" name="title"></label>
-			<br>
-			<label>Description:</label> <textarea class="form-control" name="body"></textarea>
-			<br>
-			<label><input type="radio" name="ticket_type" value="Bug">Bug</label>
-			<label><input type="radio" name="ticket_type" value="Feature">Feature</label>
-			<br>
-			<input type="submit" name="Submit">
-		</form>
+		<div class="col-md-6 offset-md-3">
+        <form method="POST" action="{% url 'add_ticket' %}">
+          {% csrf_token %}
+ 		  {% if form.errors %}
+ 		  		<p>Errors</p>
+ 		  {% endif %}
+          {{ form|crispy }}
+          <div class="text-center">
+          	<button type="submit" class="btn btn-ticket">Add Ticket</button>
+      	  </div>
+        </form>
+    </div>
 		<a href="{% url 'home' %}" class="btn btn-ticket text-center my-2">Back</a>
 	</div>
 {% endblock %}
