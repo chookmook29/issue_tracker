@@ -44,3 +44,8 @@ Password form field at account details still being displayed even after explicit
     - Check for CSS errors.
 - [Font Awesome](https://fontawesome.com/)
     - Icons for the application.
+
+
+### Acknowledgements
+
+- Big shout out to my mentor [Antonija Šimić](https://github.com/tonkec/) and Code Institute tutors
