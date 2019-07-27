@@ -26,6 +26,8 @@ Password form field at account details still being displayed even after explicit
     - **flask.session** was used to store all variables values. 
 - [D3.js](https://d3js.org/)
     - Used for creating charts.
+- [checkout.js](https://docs.checkout.com/docs/checkoutjs)
+    - Used for creating checkout.
 - [unit-test](https://docs.python.org/3/library/unittest.html)
     - Used for automated testing.
 - [Balsamiq](https://balsamiq.com/)
