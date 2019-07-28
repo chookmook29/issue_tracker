@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 	<div class="container">
 	    <h1>New comment</h1>
 	    <form method="POST">{% csrf_token %}
-	        {{ form.as_p }}
-	        <button type="submit">Send</button>
+	        {{ form|crispy }}
+	        <button type="submit" class="btn btn-ticket">Send</button>
 	    </form>
-	    <a href="{% url 'home' %}">Back</a>
+	    <a href="{% url 'home' %}" class="btn btn-ticket my-2">Back</a>
 	</div>
 {% endblock %}
