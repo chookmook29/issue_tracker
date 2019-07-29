@@ -24,11 +24,16 @@ html {
 body {
 	font-family: 'Roboto';
 	height: 100%;
+}
+.base_bg {
 	background: url("/static/img/background.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
+}
+.child_bg {
+	background-color: whitesmoke;
 }
 .btn-ticket {
 	border-color: black;
