@@ -23,7 +23,7 @@
 		var layout = d3.layout.cloud()
 		  .size([width, height])
 		  .words(usernames.map(function(d) { return {text: d.username, size:d.size}; }))
-		  .padding(5)        //space between words
+		  .padding(20)        //space between words
 		  .rotate(function() { return ~~(Math.random() * 2) * 90; })
 		  .fontSize(function(d) { return d.size; })      // font size of words
 		  .on("end", draw);
@@ -39,9 +39,9 @@
 		        .data(words)
 		      .enter().append("text")
 		        .style("font-size", function(d) { return d.size; })
+		        .style("text-shadow", "0px 0px 3px #000000")
 		        .style("fill", function() { return '#'+(Math.random()*0xFFFFFF<<0).toString(16); })//Random colour for every entry
 		        .attr("text-anchor", "middle")
-		        .style("font-family", "Impact")
 		        .attr("transform", function(d) {
 		          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
 		        })
@@ -105,6 +105,7 @@
 		  .text(function(d){ return d.data.key})
 		  .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
 		  .attr('fill', "white")
+		  .style("text-shadow", "0px 0px 3px #000000")
 		  .style("text-anchor", "middle")
 		  .style("font-size", 17)
 	</script>
