@@ -30,13 +30,8 @@
 				<h5 class="card-title">{{ ticket.title|title }}</h5>
 				<p class="card-text w-75 mx-auto">{{ ticket.body }}</p>
 				<p>Created by: {{ ticket.author }}</p>
-				{% if user.is_authenticated %}
-				<!-- Comments only for registered users -->
-				<a href="{% url 'add_comment' pk=ticket.pk %}" class="btn btn-ticket my-2">Add comment</a>
-				{% endif %}
-				<p>Upvotes: {{ ticket.upvotes }}</p>
+				<p><span class="upvote">&#9733;</span>{{ ticket.upvotes }}</p>
 				{% if ticket.ticket_type == 'Feature' %}
-				<h5>Upvote for £5.00</h5>
 				<div class="mb-3">
 					<!-- For better user experience checkout.js library used -->
 					<form action="{% url 'show_single' ticket.id %}" method="post">
@@ -48,6 +43,11 @@
 					data-currency="gbp"
 					data-locale="auto">
 					</script>
+					<script>
+					// Hide default stripe button
+					document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+					</script>
+					<button type="submit" class="btn btn-ticket mb-2">Upvote for £5.00</button>
 					</form>
 					{% else %}
 					<a href="{% url 'checkout' ticket.id %}" class="btn btn-ticket mb-2">Upvote</a>
@@ -61,6 +61,10 @@
 				{% empty %}
 				<p>No comments here yet :(</p>
 				{% endfor %}
+				{% if user.is_authenticated %}
+				<!-- Comments only for registered users -->
+				<a href="{% url 'add_comment' pk=ticket.pk %}" class="btn btn-ticket mb-3">Add comment</a>
+				{% endif %}
 				<div class="text-center">
 					<span class="step-links">
 					{% if comments.has_previous %}
@@ -87,10 +91,11 @@
 					<a href="{% url 'all_tickets' %}" class="btn btn-ticket text-center my-2">Back</a>
 				</div>
 				</div>
+			</div>
 				<div class="card-footer text-muted">
 					{{ ticket.pub_date }}
 				</div>
-			</div>
+			
 			{% endif %}
 		</div>	
 {% endblock %}
