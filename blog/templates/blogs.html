@@ -6,7 +6,7 @@
 	<div class="container text-center">
 {% for blog in all_blogs.all %}
 		<div class="card mb-5">
-		  <img class="card-img-top small-img" src="{{ blog.image.url }}" alt="Card image cap">
+		  <img class="card-img-top small-img" src="{{ blog.image.url }}" alt="Blog entry image">
 		  <div class="card-body">
 		    <h5 class="card-title">{{ blog.title }}</h5>
 		    <p class="card-text">{{ blog.body }}</p>
