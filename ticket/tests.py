@@ -9,6 +9,6 @@ class TicketTestCase(TestCase):
     def test_ticket_fields(self):
         """Ticket created has its correct default values"""
         ticket = Ticket.objects.get(title="test")
-        self.assertEqual(ticket.upvotes, '0')
-        self.assertEqual(ticket.type, '1')
+        self.assertEqual(ticket.upvotes, 0)
+        self.assertEqual(ticket.ticket_type, '1')
         self.assertEqual(ticket.progress, 'To do')

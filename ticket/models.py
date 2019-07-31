@@ -20,7 +20,7 @@ class Ticket(models.Model):
         (BUG, 'Bug'),
         (FEATURE, 'Feature'),
     )
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(default='2001-01-01')
     progress = models.CharField(
                max_length=10, choices=STATUS_CHOICES, default='To do')
     # Defaults needed for database migrations, otherwise errors
