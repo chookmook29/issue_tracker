@@ -2,11 +2,11 @@ from django.test import TestCase
 from .models import CustomUser
 
 
-class TicketTestCase(TestCase):
+class UserTestCase(TestCase):
     def setUp(self):
         CustomUser.objects.create(username="user", password="password")
 
-    def test_ticket_fields(self):
+    def test_user_fields(self):
         """CustomUser created has its correct default values"""
         user = CustomUser.objects.get(username="user")
         self.assertEqual(user.is_superuser, False)
