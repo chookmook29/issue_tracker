@@ -45,6 +45,29 @@ Password form field at account details still being displayed even after explicit
 - [Font Awesome](https://fontawesome.com/)
     - Icons for the application.
 
+## Testing
+
+### Automated tests
+
+In order to run automated tests in Django you need to:
+
+1. Replace Database entry in issue_tracker/settings.py to:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+    }
+}
+2. Run commands:
+```
+python manage.py runserver
+python manage.py makemigrations
+python manage.py collectstatic
+```
+3. Run the test itself by typing:
+```
+python manage.py test
+```
 
 ### Acknowledgements
 
