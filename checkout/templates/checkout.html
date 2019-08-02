@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-	<div class="container text-center">
+	<div class="container text-center pt-5">
 		<h2>Thank you</h2>
 	<br>
-	<a href="{% url 'show_single' ticket.id %}">Back</a>
+	<a href="{% url 'show_single' ticket.id %}" class="btn btn-ticket">Back</a>
 	</div>
 {% endblock %}
