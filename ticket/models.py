@@ -3,8 +3,8 @@ from django.conf import settings
 
 
 class Ticket(models.Model):
-    title = models.CharField(max_length=50)
-    body = models.TextField()
+    title = models.CharField(max_length=50, verbose_name='Title')
+    body = models.TextField(verbose_name='Description')
     # Two sets of constants for choice fields, needed for custom fields
     TO_DO = 'To do'
     DOING = 'Doing'
@@ -26,7 +26,7 @@ class Ticket(models.Model):
     # Defaults needed for database migrations, otherwise errors
     upvotes = models.IntegerField(default='0')
     ticket_type = models.CharField(
-                  max_length=10, choices=TYPE_CHOICES, default='1')
+                  max_length=10, choices=TYPE_CHOICES, default='1', verbose_name='Ticket type')
     author = models.ForeignKey(
              settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='1')
 
