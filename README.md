@@ -86,24 +86,38 @@ This web application has been manually tested with different scenarios that the 
 11. Change user details
 
 1. Log in
-    1. Click on 'Log In' to be redirected to form with "user" and "password" fields.
-    2. Sign in with username "user" and password "user".
-    3. Click on 'Submit' to be redirected to homepage.
-    4. Check the user is logged in by seeing if 'Add Recipe' and 'My Recipes' are visible in the navbar.
+    1. Click on "Log In" to be redirected to form with "user" and "password" fields.
+    2. Sign in with username and password of super user.
+    3. Click "Log In" button to be redirected back to homepage.
+    2. Check the user is logged in by seeing if "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" are visible in the navbar.
 
 2. Log out:
     1. Make sure you are signed in. 
-    2. Click on 'Sign Out' button.
+    2. Click on 'Log Out' navbar element.
     3. Verify that navbar has changed(no "Sign Out", "My Recipes" & "Add Recipes" link). Instead, only five initial links are visible.
-    4. Click browser's back button. Verify, that you can't see  "My Recipes" and "Add Recipes" anymore.
+    4. Click browser's back button. Verify, that you can't see "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" anymore.
 
 3. Sign Up:
-    1. Similar to signing in, use "Sign Up" link to register new user.
+    1. Similar to logging in, use "Sign Up" link to register new user.
     2. Check the user is logged in by seeing if "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" are visible in the navbar.
 
 4. Create ticket
+    1. Click on "New Ticket" (when logged in).
+    2. Add ticket title, text and decide the type.
+    3. Click on "Add Ticket" to be redirected to index page.
+
 5. Create comment
+    1. Navigate to "All Tickets" and click on "View Details".
+    2. Click on "Add comment" button.
+    3. Type in the text and press "Send" button.
+    4. Check if you are redirected to index page message is displayed.
+
 6. Upvote ticket
+    1. Navigate to "All Tickets" and click on one of the tickets with "Bug" tag.
+    2. Click on "Upvote" button.
+    3. Check if thank you screen is displayed.
+    4. Check if you're being redirected to index page.
+
 7. Pay for upvoting feature ticket
 8. Delete ticket
 9. Create blog entry
