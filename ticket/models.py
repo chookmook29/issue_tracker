@@ -38,4 +38,4 @@ class Comment(models.Model):
     author = models.ForeignKey(
              settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
-    text = models.TextField()
+    text = models.TextField(verbose_name='Comment text')

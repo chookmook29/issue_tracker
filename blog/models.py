@@ -18,7 +18,7 @@ class Blog_comment(models.Model):
     author = models.ForeignKey(
              settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
-    text = models.TextField()
+    text = models.TextField(verbose_name='Comment text')
 
     def __str__(self):
         return str(self.ticket) + ' | ' + str(self.date) + ' | ' + str(self.author)
