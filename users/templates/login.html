@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h3 class="text-center">Login</h3>
+    <h3 class="text-center">Enter your details</h3>
     <div class="col-md-6 offset-md-3">
         <form method="POST" action>
           {% csrf_token %}
@@ -11,7 +11,7 @@
             <input type="password" class="form-control" placeholder="User password" name="password">
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-ticket">Login</button>
+            <button type="submit" class="btn btn-ticket">Log In</button>
           </div>
         </form>
     </div>
