@@ -7,23 +7,13 @@
 	<div class="container text-center">
 {% for blog in all_blogs.all %}
 		<div class="card mb-5">
-		  <img class="card-img-top small-img" src="{{ blog.image.url }}" alt="Blog entry image">
-		  <div class="card-body">
-		    <h5 class="card-title">{{ blog.title }}</h5>
-		    <p class="card-text">{{ blog.body }}</p>
-		    <a href="{% url 'single_blog' blog.id %}" class="btn btn-ticket">Read more</a>
-		  </div>
+			<img class="card-img-top small-img" src="{{ blog.image.url }}" alt="Blog entry image">
+			<div class="card-body">
+				<h5 class="card-title">{{ blog.title }}</h5>
+				<p class="card-text">{{ blog.body }}</p>
+				<a href="{% url 'single_blog' blog.id %}" class="btn btn-ticket">Read more</a>
+			</div>
 		</div>
-
-		<!--<a href="{% url 'single_blog' blog.id %}">{{ blog.title }}</a>
-		<br>
-		<img src={{ blog.image.url }}></img>
-		<br>
-		{{ blog.body }}
-		<br>
-		{{ blog.pub_date }}
-		<br>
-		<p>Author: {{ blog.author }}</p>-->
 {% endfor %}
 		<a href="{% url 'home' %}"  class="btn btn-ticket my-2">Back</a>
 	</div>

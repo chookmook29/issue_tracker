@@ -13,8 +13,8 @@
 					{% if ticket.ticket_type == 'Bug' %}
 						<span class="status" style="background-color: #F9899C">BUG</span>
 						{% if ticket.progress == 'To do' %} 
-					<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-						<span class="status" style="background-color: #ec5151">ToDo</span>
+							<!-- Depending on type of ticket and progress state different font colour for improved readability -->
+							<span class="status" style="background-color: #ec5151">ToDo</span>
 					{% elif ticket.progress == 'Doing' %}
 						<span class="status" style='background-color: #ffc365'>{{ ticket.progress }}</span>
 					{% else %}
@@ -23,18 +23,17 @@
 					{% else %}
 						<span class="status" style="background-color: #9292ff">FEATURE</span>
 						{% if ticket.progress == 'To do' %} 
-					<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-						<span class="status" style="background-color: #ec5151">{{ ticket.progress|title }}</span>
-					{% elif ticket.progress == 'Doing' %}
-						<span class="status" style="background-color: #ffc365">{{ ticket.progress }}</span>
-					{% else %}
-						<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
-					{% endif %}
+						<!-- Depending on type of ticket and progress state different font colour for improved readability -->
+							<span class="status" style="background-color: #ec5151">{{ ticket.progress|title }}</span>
+						{% elif ticket.progress == 'Doing' %}
+							<span class="status" style="background-color: #ffc365">{{ ticket.progress }}</span>
+						{% else %}
+							<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
+						{% endif %}
 					{% endif %}
 				</div>
 				<div class="card-body mx-4 my-4">
-					<h5 class="card-title">
-					{{ ticket.title|title }}</h5>
+					<h5 class="card-title">{{ ticket.title|title }}</h5>
 					<p class="card-text my-4">{{ ticket.body|truncatewords:15  }}</p>
 					<a href="{% url 'show_single' ticket.id %}" class="btn btn-ticket">View details</a>
 				</div>

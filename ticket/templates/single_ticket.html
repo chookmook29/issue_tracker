@@ -8,24 +8,24 @@
 			{% if ticket.ticket_type == 'Bug' %}
 				<span class="status" style="background-color: #F9899C">BUG</span>
 				{% if ticket.progress == 'To do' %} 
-				<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-				<span class="status" style="background-color: #ec5151">ToDo</span>
+					<!-- Depending on type of ticket and progress state different font colour for improved readability -->
+					<span class="status" style="background-color: #ec5151">ToDo</span>
 				{% elif ticket.progress == 'Doing' %}
-				<span class="status" style='background-color: #ffc365'>{{ ticket.progress }}</span>
+					<span class="status" style='background-color: #ffc365'>{{ ticket.progress }}</span>
 				{% else %}
-				<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
+					<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
 				{% endif %}
-				{% else %}
+			{% else %}
 				<span class="status" style="background-color: #9292ff">FEATURE</span>
 				{% if ticket.progress == 'To do' %} 
-				<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-				<span class="status" style="background-color: #ec5151">{{ ticket.progress|title }}</span>
+					<!-- Depending on type of ticket and progress state different font colour for improved readability -->
+					<span class="status" style="background-color: #ec5151">{{ ticket.progress|title }}</span>
 				{% elif ticket.progress == 'Doing' %}
-				<span class="status" style="background-color: #ffc365">{{ ticket.progress }}</span>
+					<span class="status" style="background-color: #ffc365">{{ ticket.progress }}</span>
 				{% else %}
-				<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
+					<span class="status" style="background-color: #28a745">{{ ticket.progress }}</span>
 				{% endif %}
-				{% endif %}
+			{% endif %}
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">{{ ticket.title|title }}</h5>
@@ -33,34 +33,34 @@
 				<p>Created by: {{ ticket.author }}</p>
 				<p><span class="upvote">&#9733;</span>{{ ticket.upvotes }}</p>
 				{% if ticket.ticket_type == 'Feature' %}
-				<div class="mb-3">
-					<!-- For better user experience checkout.js library used -->
-					<form action="{% url 'show_single' ticket.id %}" method="post">
-						{% csrf_token %}
-					<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-					data-key={{ key }}
-					data-description="Payment"
-					data-amount="500"
-					data-currency="gbp"
-					data-locale="auto">
-					</script>
-					<script>
-					// Hide default stripe button
-					document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-					</script>
-					<button type="submit" class="btn btn-ticket mb-2">Upvote for £5.00</button>
-					</form>
-					{% else %}
+					<div class="mb-3">
+						<!-- For better user experience checkout.js library used -->
+						<form action="{% url 'show_single' ticket.id %}" method="post">
+							{% csrf_token %}
+							<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							data-key={{ key }}
+							data-description="Payment"
+							data-amount="500"
+							data-currency="gbp"
+							data-locale="auto">
+							</script>
+							<script>
+							// Hide default stripe button
+							document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+							</script>
+							<button type="submit" class="btn btn-ticket mb-2">Upvote for £5.00</button>
+						</form>
+				{% else %}
 					<a href="{% url 'checkout' ticket.id %}" class="btn btn-ticket mb-2">Upvote</a>
-					{% endif %}
-					{% for comment in comments %}
-					<div class="comment">
-					<div class="date">{{ comment.created_date }}</div>
-					<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
-					<p>{{ comment.text|linebreaks }}</p>
-				</div>
+				{% endif %}
+						{% for comment in comments %}
+						<div class="comment">
+						<div class="date">{{ comment.created_date }}</div>
+						<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
+						<p>{{ comment.text|linebreaks }}</p>
+					</div>
 				{% empty %}
-				<p>No comments here yet :(</p>
+					<p>No comments here yet :(</p>
 				{% endfor %}
 				{% if user.is_authenticated %}
 				<!-- Comments only for registered users -->
@@ -87,16 +87,13 @@
 				<div class="container my-2">
 					<!-- If statement below prevents users from deleting someone else's tickets-->
 					{% if user.is_staff == True %}
-					<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket my-2">Delete</a>
+						<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket my-2">Delete</a>
 					{% endif %}
 					<a href="{% url 'all_tickets' %}" class="btn btn-ticket text-center my-2">Back</a>
 				</div>
 				</div>
 			</div>
-				<div class="card-footer text-muted">
-					{{ ticket.pub_date }}
-				</div>
-			
-			{% endif %}
+				<div class="card-footer text-muted">{{ ticket.pub_date }}</div>
+				{% endif %}
 		</div>	
 {% endblock %}
