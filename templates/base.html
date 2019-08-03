@@ -1,73 +1,72 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-</head>
-<body {% block bg %}class="d-flex flex-column base_bg"{% endblock %}>
-	<div class="text-center">
-		{% if messages %}
-			{% for message in messages %}
-				<div class="alert alert-secondary alert-dismissable" role="alert">
-					<button class="close" data-dismiss="alert">
-						<small><sup>x</sup></small>
-					</button>
-					{{ message }}
-			 {% endfor %}
-		{% endif %}
-				</div>
-	<nav class="navbar navbar-expand-lg navbar-light">
-		<h3><a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-ticket-alt"></i> Issue Tracker</a></h3>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav ml-auto">
-			  {% if user.is_authenticated %}
-			  		<li class="nav-item active">
-						<a class="nav-link" href="{% url 'all_tickets' %}">All Tickets</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'add_ticket' %}">New Ticket</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'blogs' %}">Blog</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'change' %}">Your Account</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-					</li>
-				{% else %}
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'login' %}">Log In</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'sign_up' %}">Sign Up</a>
-					</li>
-				{% endif %}
-			</ul>
+	<head>
+		<title>{% block title %}{% endblock %}</title><!-- title changes with every template -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"><!--  browser will render the width of the page at the width of its own screen, needed for responsive design -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	</head>
+	<body {% block bg %}class="d-flex flex-column base_bg"{% endblock %}>
+		<div class="text-center">
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-secondary alert-dismissable" role="alert">
+						<button class="close" data-dismiss="alert">
+							<small><sup>x</sup></small>
+						</button>
+						{{ message }}
+				 {% endfor %}
+			{% endif %}
+					</div>
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<h3><a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-ticket-alt"></i> Issue Tracker</a></h3>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav ml-auto">
+				  {% if user.is_authenticated %}
+				  		<li class="nav-item active">
+							<a class="nav-link" href="{% url 'all_tickets' %}">All Tickets</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'add_ticket' %}">New Ticket</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'blogs' %}">Blog</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'change' %}">Your Account</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+						</li>
+					{% else %}
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'login' %}">Log In</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'sign_up' %}">Sign Up</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+		<div id="page-content">
+	{% block content %}
+	{% endblock %}
 		</div>
-	</nav>
-	<div id="page-content">
-
-{% block content %}
-{% endblock %}
-	</div>
-	<div id="sticky-footer" class="container">
-		<p class="paragraph text-center">&#169; Chookmook {% now 'Y' %}</p>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+		<div id="sticky-footer" class="container">
+			<p class="paragraph text-center">&#169; Chookmook {% now 'Y' %}</p>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
 </html>
