@@ -4,7 +4,7 @@ from blog.models import Blog
 
 class BlogTestCase(TestCase):
     def setUp(self):
-        Blog.objects.create(title='test', body='text')
+        Blog.objects.create(title='test', body='text', id=1)
 
     def test_blog_fields(self):
         """Blog created has its correct default values"""
@@ -14,4 +14,8 @@ class BlogTestCase(TestCase):
 
     def test_blogview_url_exists_at_desired_location(self):
         response = self.client.get('/blog/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_blogview_url_exists_at_desired_location2(self):
+        response = self.client.get('/blog/show/1')
         self.assertEqual(response.status_code, 200)
