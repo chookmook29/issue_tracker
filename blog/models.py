@@ -6,7 +6,7 @@ class Blog(models.Model):
     author = models.ForeignKey(
              settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='1')
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField(default='2001-01-01')
+    pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to='', default='default.jpg')
 
@@ -21,4 +21,4 @@ class Blog_comment(models.Model):
     text = models.TextField(verbose_name='Comment text')
 
     def __str__(self):
-        return str(self.ticket) + ' | ' + str(self.date) + ' | ' + str(self.author)
+        return str(self.ticket) + ' | ' + str(self.pub_date) + ' | ' + str(self.author)
