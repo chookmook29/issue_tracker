@@ -12,10 +12,6 @@ class BlogTestCase(TestCase):
         self.assertEqual(blog.image, 'default.jpg')
         self.assertEqual(blog.body, 'text')
 
-    def test_blogview_url_exists_at_desired_location(self):
-        response = self.client.get('/blog/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_blogview_url_exists_at_desired_location2(self):
+    def test_blog_page(self):
         response = self.client.get('/blog/show/1')
         self.assertEqual(response.status_code, 200)
