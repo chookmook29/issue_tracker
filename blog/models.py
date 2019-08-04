@@ -6,7 +6,7 @@ class Blog(models.Model):
     author = models.ForeignKey(
              settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='1')
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(null=True)
     body = models.TextField()
     image = models.ImageField(upload_to='', default='default.jpg')
 
