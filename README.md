@@ -15,6 +15,12 @@ To offer transparency there is a page that contains some graphs showing how many
 
 ## Features
 
+### Existing Features
+
+### Features Left to Implement
+
+- Blog app routes and templates naming are confusing (blog as entry) it needs reworking, but requires so many app and main project changes that it was left behind to be implemented post deployment.
+
 ##Known Issues
 Password form field at account details still being displayed even after explicitly ordered not to in custom form class. Temporary work-around it is to add hidden status to that field block in css rules file.
 
@@ -57,22 +63,43 @@ Password form field at account details still being displayed even after explicit
 
 ### Automated tests
 
+There are eleven automated tests that use Django test module:
+1. test_homepage - checks if index page is being created.
+2. test_blog_page - checks if main blog page is being created.
+3. test_login_page - checks if user login page is being created.
+4. test_signup_page - checks for sign up page being created.
+5. test_ticket_fields - checks if instance of ticket model is being created.
+6. test_all_tickets -  checks for "all tickets" page.
+7. test_single_ticket - checks if ticket page with id "1" is created.
+8. test_user_fields - checks for user instance creation.
+9. test_login_POST - checks if user login data is being posted.
+10. test_blog_fields - checks if blog entry is being created.
+11. test_blog_page - checks for single blog entry with id "1".
+
+
 In order to run automated tests in Django you need to:
 
 1. Replace Database entry in issue_tracker/settings.py to:
+```
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
     }
 }
-2. Run commands:
+```
+2. Change settings.py DEBUG entry:
+```
+DEBUG=False
+```
+3. Run commands:
 ```
 python manage.py runserver
 python manage.py makemigrations
+python manage.py migrate
 python manage.py collectstatic
 ```
-3. Run the test itself by typing:
+4. Run the test itself by typing:
 ```
 python manage.py test
 ```
@@ -127,10 +154,31 @@ This web application has been manually tested with different scenarios that the 
     4. Check if you're being redirected to index page.
 
 7. Pay for upvoting feature ticket
+    1. Navigate to single ticket details with a "Feature" tag.
+    2. Press on "Pay to upvote" button.
+    3. Check if given ticket got extra upvote.
+    4. Check if index page pie chart has changed, your nickname's chart part has changed.
+
 8. Delete ticket
+    1. If you created new ticket using "New Ticket" link navigate to your ticket.
+    2. Press "Delete" button on ticket details page.
+    3. Check if your ticket disappeared from "All Tickets" tab.
+
 9. Create blog entry
+    1. If you are admin user go to [admin address](http://issue-tracker-pch.herokuapp.com/admin).
+    2. Go to blog tab.
+    3. Add new blog entry with image.
+    4. To check if it was added go back to the website and navigate to Blog link.
+
 10. Comment blog entry
+    1. Enter "All Blogs" and show details of single entry.
+    2. Press "Add Comment" and enter text.
+    3. Post it and check if it was added below blog entry.
+
 11. Change user details
+    1. From main page go to "Your Account".
+    2. Change email, first name and second name.
+    3. Post changes using button.
 
 ### User testing
 

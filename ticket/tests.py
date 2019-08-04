@@ -14,10 +14,10 @@ class TicketTestCase(TestCase):
         self.assertEqual(ticket.ticket_type, '1')
         self.assertEqual(ticket.progress, 'To do')
 
-    def test_view_url_exists_at_desired_location(self):
+    def test_all_tickets(self):
         response = self.client.get('/ticket/all_tickets/')
         self.assertEqual(response.status_code, 200)
 
-    def test_view_url_exists_at_desired_location2(self):
+    def test_single_ticket(self):
         response = self.client.get('/ticket/show/1')
         self.assertEqual(response.status_code, 200)
