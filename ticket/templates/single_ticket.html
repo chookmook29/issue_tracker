@@ -31,7 +31,11 @@
 				<h5 class="card-title">{{ ticket.title|title }}</h5>
 				<p class="card-text w-75 mx-auto">{{ ticket.body }}</p>
 				<p>Created by: {{ ticket.author }}</p>
-				<p><span class="upvote">&#9733;</span>{{ ticket.upvotes }}</p>
+				{% if ticket.ticket_type == 'Feature' %}
+					<p>I want to have this too: {{ ticket.upvotes }}</p>
+				{% else %}
+					<p>I have this too: {{ ticket.upvotes }}</p>
+				{% endif %}
 				{% if ticket.ticket_type == 'Feature' %}
 					<div class="mb-3">
 						<!-- For better user experience checkout.js library used -->
