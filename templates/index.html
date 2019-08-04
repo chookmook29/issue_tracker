@@ -3,8 +3,8 @@
 {% block content %}
 	<div class="container pt-5">
 		<div class="row">
-			<div id="my_dataviz" class="text-center col-sm-12 col-md-6" data-toggle="tooltip" data-placement="top" title="Wordcloud"></div>
-			<div id="my_dataviz2" class="text-center col-sm-12 col-md-6 pb-5" data-toggle="tooltip" data-placement="bottom" title="Pie chart"></div>
+			<div id="my_dataviz" class="text-center col-sm-12 col-md-6" data-toggle="tooltip" data-placement="top" title="Users with most comments"></div>
+			<div id="my_dataviz2" class="text-center col-sm-12 col-md-6 pb-5" data-toggle="tooltip" data-placement="bottom" title="Users with most contributions"></div>
 			<script type="text/javascript">
 				// List of words
 				var usernames = [{% for data in dataset %}{username: "{{ data.username }}", size: "3{{ data.amount_comments }}"},{% endfor %}];
