@@ -186,6 +186,62 @@ Web application was also tested by group of users using similar scenarios as men
 
 ## Deployment
 
+The application is deployed to Heroku.
+
+In order to deploy, following changes has been made:
+
+1. Changed settings.py DEBUG entry:
+```
+DEBUG=False
+```
+2. Added requirements.txt and Procfile, as required by heroku.
+3. Set Heroku Config Vars:
+4. IP to 0.0.0.0
+5. PORT to 5000
+6. Added environmental variables for AWS S3 account.
+7. Added environmental variables for app secret key.
+8. Heroku's PostgreSQL configuration variables.
+9. For payments set Stripes environmental variables.
+10. Run:
+```
+python manage.py collecstatic
+```
+11. Configured dynos with this line:
+```
+web gunicorn issue_tracker.wsgi:application
+```
+12. Imported django_heroku module and added this line at the bottom of settings.py:
+```
+django_heroku.settings(locals())
+```
+
+To run it locally:
+
+- Install python 3
+- Install django framework
+- Install packages requierd by project using pip3:
+    boto3
+    certifi
+    chardet
+    dj-database-url
+    django-crispy-forms
+    django-heroku
+    django-storages
+    gunicorn
+    idna
+    Pillow
+    psycopg2
+    psycopg2-binary
+    pytz
+    requests
+    stripe
+    urllib3
+- Start the web server with commands:
+```
+python manage.py runserver
+```
+- Type http://127.0.0.1:8000 address or http://localhost:8000 in your browser window
+
 ## Credits
 
 ### Content
