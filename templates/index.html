@@ -58,7 +58,7 @@
 				  .append("g")
 					.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 				// Django template engine to generate some array entries, made larger by adding digits
-				var data = { {% for data in dataset %}{{ data.username }}: 2{{ data.contributions }},{% endfor %} }
+				var data = { {% for data in dataset %}{{ data.username }}: 2{{ data.contributions }}, {% endfor %} }
 				// Using Django's templating, colour range is being generated based on amount of data entries
 				var color = d3.scaleOrdinal()
 				  .domain(data)
