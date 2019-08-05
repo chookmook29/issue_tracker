@@ -13,6 +13,8 @@ To offer transparency there is a page that contains some graphs showing how many
 
 ## Database Schema
 
+![Database Schema](https://istr-static.s3.eu-west-2.amazonaws.com/img/schema.png)
+
 ## Features
 
 ### Existing Features
