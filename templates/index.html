@@ -30,19 +30,19 @@
 				function draw(words) {
 				  svg
 					.append("g")
-					  .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-					  .selectAll("text")
-						.data(words)
-					  .enter().append("text")
-						.style("font-size", function(d) { return d.size; })
-						.style("text-shadow", "0px 0px 3px #000000")
-						.style("fill", function() { return '#'+(Math.random()*0xFFFFFF<<0).toString(16); })//Random colour for every entry
-						.attr("text-anchor", "middle")
-						.attr("transform", function(d) {
-						  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-						})
-						.text(function(d) { return d.text; });
-						}
+					.attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+					.selectAll("text")
+					.data(words)
+					.enter().append("text")
+					.style("font-size", function(d) { return d.size; })
+					.style("text-shadow", "0px 0px 3px #000000")
+					.style("fill", function() { return '#'+(Math.random()*0xFFFFFF<<0).toString(16); })//Random colour for every entry
+					.attr("text-anchor", "middle")
+					.attr("transform", function(d) {
+					return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+					})
+					.text(function(d) { return d.text; });
+					}
 			</script>
 			<script type="text/javascript">
 				// set the dimensionsof the graph
@@ -52,20 +52,20 @@
 				var radius = Math.min(width, height) / 2
 				// append the svg object to the div called 'my_dataviz'
 				var svg = d3.select("#my_dataviz2")
-				  .append("svg")
+					.append("svg")
 					.attr("width", width)
 					.attr("height", height)
-				  .append("g")
+					.append("g")
 					.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 				// Django template engine to generate some array entries, made larger by adding digits
 				var data = { {% for data in dataset %}"{{ data.username }}": "2{{ data.contributions }}" , {% endfor %} }
 				// Using Django's templating, colour range is being generated based on amount of data entries
 				var color = d3.scaleOrdinal()
-				  .domain(data)
-				  .range([ {% for data in dataset %}('#'+(Math.random()*0xFFFFFF<<0).toString(16)),{% endfor %}]);
+					.domain(data)
+					.range([ {% for data in dataset %}('#'+(Math.random()*0xFFFFFF<<0).toString(16)),{% endfor %}]);
 				// Compute the position of each group on the pie:
 				var pie = d3.pie()
-				  .value(function(d) {return d.value; })
+					.value(function(d) {return d.value; })
 				var data_ready = pie(d3.entries(data))
 				// Now I know that group A goes from 0 degrees to x degrees and so on.
 				// shape helper to build arcs:
@@ -74,30 +74,30 @@
 				  .outerRadius(radius)
 				// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
 				svg
-				  .selectAll('mySlices')
-				  .data(data_ready)
-				  .enter()
-				  .append('path')
+					.selectAll('mySlices')
+					.data(data_ready)
+					.enter()
+					.append('path')
 					.attr('d', arcGenerator)
 					.attr('fill', function(d){ return(color(d.data.key)) })
 					.style("stroke-width", "2px")
 					.style("opacity", 0.7)
 				// Now add the annotation. Use the centroid method to get the best coordinates
 				svg
-				  .selectAll('mySlices')
-				  .data(data_ready)
-				  .enter()
-				  .append('text')
-				  .text(function(d){ return d.data.key})
-				  .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-				  .attr('fill', "white")
-				  .style("text-shadow", "0px 0px 3px #000000")
-				  .style("text-anchor", "middle")
-				  .style("font-size", 17)
+					.selectAll('mySlices')
+					.data(data_ready)
+					.enter()
+					.append('text')
+					.text(function(d){ return d.data.key})
+					.attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+					.attr('fill', "white")
+					.style("text-shadow", "0px 0px 3px #000000")
+					.style("text-anchor", "middle")
+					.style("font-size", 17)
 			</script>
 			<script>
 				$(document).ready(function(){
-				  $('[data-toggle="tooltip"]').tooltip();   
+					$('[data-toggle="tooltip"]').tooltip();   
 				});
 			</script>
 		</div>
