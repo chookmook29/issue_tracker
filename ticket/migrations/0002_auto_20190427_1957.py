@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Comment',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
                 ('date', models.DateField(auto_now=True)),
                 ('text', models.TextField()),
             ],
@@ -21,11 +24,18 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='ticket',
             name='progress',
-            field=models.CharField(choices=[('To do', 'To do'), ('Doing', 'Doing'), ('Done', 'Done')], default='1', max_length=10),
+            field=models.CharField(choices=[('To do', 'To do'),
+                                            ('Doing', 'Doing'),
+                                            ('Done', 'Done')],
+                                   default='1',
+                                   max_length=10),
         ),
         migrations.AddField(
             model_name='ticket',
             name='ticket_type',
-            field=models.CharField(choices=[('Bug', 'Bug'), ('Feature', 'Feature')], default='1', max_length=10),
+            field=models.CharField(choices=[('Bug', 'Bug'),
+                                            ('Feature', 'Feature')],
+                                   default='1',
+                                   max_length=10),
         ),
     ]

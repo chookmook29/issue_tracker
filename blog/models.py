@@ -10,6 +10,9 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='', default='default.jpg')
 
+    def __str__(self):
+        return str(self.title) + ' | ' + str(self.pub_date)
+
 
 class Blog_comment(models.Model):
     ticket = models.ForeignKey(
@@ -21,4 +24,4 @@ class Blog_comment(models.Model):
     text = models.TextField(verbose_name='Comment text')
 
     def __str__(self):
-        return str(self.ticket) + ' | ' + str(self.pub_date) + ' | ' + str(self.author)
+        return str(self.ticket) + ' | ' + str(self.author)

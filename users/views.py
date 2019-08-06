@@ -57,9 +57,11 @@ def change_details(request):
             email = form.cleaned_data['email']
             user = authenticate(email=email)
             login(request, user)
-            messages.success(request, ('You successfully changed your details!'))
+            messages.success(request,
+                             ('You successfully changed your details!'))
             return redirect('home')
     else:
         form = CustomUserChangeForm(instance=request.user)
     user_account = CustomUser.objects.get(username=request.user)
-    return render(request, 'change.html', {'form': form, 'user_account': user_account})
+    return render(request, 'change.html',
+                  {'form': form, 'user_account': user_account})

@@ -23,7 +23,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ticket',
             name='ticket_type',
-            field=models.CharField(choices=[('Bug', 'Bug'), ('Feature', 'Feature')], default='1', max_length=10, verbose_name='Ticket type'),
+            field=models.CharField(choices=[('Bug', 'Bug'),
+                                            ('Feature', 'Feature')],
+                                   default='1',
+                                   max_length=10,
+                                   verbose_name='Ticket type'),
         ),
         migrations.AlterField(
             model_name='ticket',

@@ -68,26 +68,35 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd4bsraie2juttf',
         'USER': 'ohgtupwejcrokm',
-        'PASSWORD': '557bc52b2c5a9421686e1c7550306901967b5f1f0cb8f5c1e3066eef68043ad5',
+        'PASSWORD':
+        '557bc52b2c5a9421686e1c7550306901967b5f1f0cb8f5c1e3066eef68043ad5',
         'HOST': 'ec2-54-217-208-105.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
-        'URI': 'postgres://ohgtupwejcrokm:557bc52b2c5a9421686e1c7550306901967b5f1f0cb8f5c1e3066eef68043ad5@ec2-54-217-208-105.eu-west-1.compute.amazonaws.com:5432/d4bsraie2juttf',
+        'URI':
+        'postgres://ohgtupwejcrokm:557bc52b2c5a9421686e1c7550306901967b5f1f0\
+         cb8f5c1e3066eef68043ad5@ec2-54-217-208-105.eu-west-1.compute.amazona\
+         ws.com:5432/d4bsraie2juttf',
     }
 }
 
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarity\
+         Validator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 # User needed customization hence new model - Custom User

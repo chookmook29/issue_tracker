@@ -9,5 +9,6 @@ def home(request):
     dataset = CustomUser.objects.all().order_by('-amount_comments')[:5]
     return render(request, 'index.html', {'dataset': dataset})
 
+
 def info(request):
     return render(request, 'info.html')

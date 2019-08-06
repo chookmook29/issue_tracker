@@ -17,5 +17,7 @@ class UserTestCase(TestCase):
         self.assertEqual(user.last_name, "")
 
     def test_login_POST(self):
-        response = self.client.post('/login/', {'username': 'user', 'password': 'password'})
+        response = self.client.post('/login/',
+                                    {'username': 'user',
+                                     'password': 'password'})
         self.assertEqual(response.status_code, 302)

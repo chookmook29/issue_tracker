@@ -18,7 +18,8 @@ def single_blog(request, pk):
     paginator = Paginator(comment_list, 4)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
-    return render(request, 'single_entry.html', {'blog': blog, 'comments': comments})
+    return render(request, 'single_entry.html',
+                  {'blog': blog, 'comments': comments})
 
 
 def blog_comment(request, pk):
