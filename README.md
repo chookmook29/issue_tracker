@@ -11,6 +11,13 @@ To offer transparency there is a page that contains some graphs showing how many
 
 ### Wireframes
 
+Examples of wireframes I've used for this project:
+
+- [Index page](https://istr-static.s3.eu-west-2.amazonaws.com/img/wireframe_1.png)
+- [All tickets](https://istr-static.s3.eu-west-2.amazonaws.com/img/wireframe_2.png)
+- [Detailed ticket](https://istr-static.s3.eu-west-2.amazonaws.com/img/wireframe_3.png)
+- [Mobile screen](https://istr-static.s3.eu-west-2.amazonaws.com/img/wireframe_4.png)
+
 ## Database Schema
 
 ![Database Schema](https://istr-static.s3.eu-west-2.amazonaws.com/img/schema.png)
