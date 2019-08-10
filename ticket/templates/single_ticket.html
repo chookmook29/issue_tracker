@@ -61,10 +61,10 @@
 						<div class="comment">
 						<div class="date">{{ comment.created_date }}</div>
 						<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
-						<p>{{ comment.text|linebreaks }}</p>
+						<p class="small">{{ comment.text|linebreaks }}</p>
 					</div>
 				{% empty %}
-					<p>No comments here yet :(</p>
+					<p class="small">No comments here yet :(</p>
 				{% endfor %}
 				{% if user.is_authenticated %}
 				<!-- Comments only for registered users -->
