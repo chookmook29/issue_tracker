@@ -35,16 +35,19 @@
 @media screen and (min-width: 992px) and (orientation: landscape){
 	.on-top {
 		position: relative;
+		background-color: transparent;
 }
 }
 @media screen and (min-width: 992px) and (orientation: portrait){
 	.on-top {
 		position: relative;
+		background-color: transparent;
 	}
 }
 @media screen and (min-width: 1200px) and (orientation: landscape){
 	.on-top {
 		position: relative;
+		background-color: transparent;
 	}
 }
 html {
