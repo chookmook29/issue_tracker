@@ -3,20 +3,49 @@
 	src: url("/static/fonts/RobotoMono-Regular.ttf");
 }
 @media screen and (max-width: 575px) and (orientation: portrait){
+	.on-top {
+		position: fixed;
+		background-color: rgba(245,245,245, 0.7);
+	}
 }
 @media screen and (min-width: 576px) and (orientation: landscape){
+	.on-top {
+		position: fixed;
+		background-color: rgba(245,245,245, 0.7);
+	}
 }
 @media screen and (min-width: 576px) and (orientation: portrait){
+	.on-top {
+		position: fixed;
+		background-color: rgba(245,245,245, 0.7);
+	}
 }
 @media screen and (min-width: 768px) and (orientation: landscape){
+	.on-top {
+		position: fixed;
+		background-color: rgba(245,245,245, 0.7);
+	}
 }
 @media screen and (min-width: 768px) and (orientation: portrait){
+	.on-top {
+		position: fixed;
+		background-color: rgba(245,245,245, 0.7);
+	}
 }
-@media screen and (min-width: 1024px) and (orientation: landscape){
+@media screen and (min-width: 992px) and (orientation: landscape){
+	.on-top {
+		position: relative;
 }
-@media screen and (min-width: 1024px) and (orientation: portrait){
+}
+@media screen and (min-width: 992px) and (orientation: portrait){
+	.on-top {
+		position: relative;
+	}
 }
 @media screen and (min-width: 1200px) and (orientation: landscape){
+	.on-top {
+		position: relative;
+	}
 }
 html {
 	height: 100%;
@@ -63,7 +92,6 @@ body {
 	width: 100%;
 	z-index: 1;
 	right: 0;
-	position: fixed;
 }
 #sticky-footer {
 	flex-shrink: none;
