@@ -14,7 +14,7 @@ def blogs(request):
 def single_blog(request, pk):
     blog = Blog.objects.get(pk=pk)
     comment_list = BlogComment.objects.select_related().filter(
-                   id=pk).order_by('-date')
+                   blog_id=pk).order_by('-date')
     paginator = Paginator(comment_list, 4)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
