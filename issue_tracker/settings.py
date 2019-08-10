@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l18=*-$k-x!lu)x+^lt8k3cm=0j3mm+ugoqmi*e0l2h49bv)m%'
 
 # Switched off in production
-DEBUG = False
+DEBUG = True
 
 # Left empty because it doesn't affect Heroku deployment
 ALLOWED_HOSTS = []
@@ -81,11 +81,6 @@ DATABASES = {
 
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarity\
-         Validator',
-    },
     {
         'NAME':
         'django.contrib.auth.password_validation.MinimumLengthValidator',
