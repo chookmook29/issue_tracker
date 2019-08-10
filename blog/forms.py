@@ -1,9 +1,9 @@
 from django import forms
-from .models import Blog_comment
+from .models import BlogComment
 
 
-class Blog_commentForm(forms.ModelForm):
+class BlogCommentForm(forms.ModelForm):
 
     class Meta:
-        model = Blog_comment
+        model = BlogComment
         fields = ('text',)

@@ -14,7 +14,7 @@ class Blog(models.Model):
         return str(self.title) + ' | ' + str(self.pub_date)
 
 
-class Blog_comment(models.Model):
+class BlogComment(models.Model):
     blog = models.ForeignKey(
              'blog.Blog', on_delete=models.CASCADE,
              related_name='blog_comments', default='1')
