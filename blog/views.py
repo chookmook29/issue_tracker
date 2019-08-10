@@ -28,7 +28,7 @@ def blog_comment(request, pk):
         form = Blog_commentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.ticket = blog
+            comment.blog = blog
             comment.author = request.user
             comment.save()
             user = CustomUser.objects.get(username=request.user)

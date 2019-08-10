@@ -15,7 +15,7 @@ class Blog(models.Model):
 
 
 class Blog_comment(models.Model):
-    ticket = models.ForeignKey(
+    blog = models.ForeignKey(
              'blog.Blog', on_delete=models.CASCADE,
              related_name='blog_comments', default='1')
     author = models.ForeignKey(
