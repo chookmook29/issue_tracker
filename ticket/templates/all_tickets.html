@@ -14,7 +14,7 @@
 						<span class="status" style="background-color: #F9899C">BUG</span>
 						{% if ticket.progress == 'To do' %} 
 							<!-- Depending on type of ticket and progress state different font colour for improved readability -->
-							<span class="status" style="background-color: #ec5151">ToDo</span>
+							<span class="status" style="background-color: #ec5151">{{ ticket.progress|title }}</span>
 					{% elif ticket.progress == 'Doing' %}
 						<span class="status" style='background-color: #ffc365'>{{ ticket.progress }}</span>
 					{% else %}
