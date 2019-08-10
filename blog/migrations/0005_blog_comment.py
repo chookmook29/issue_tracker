@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('author',
                  models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
                                    to=settings.AUTH_USER_MODEL)),
-                ('ticket',
+                ('blog',
                  models.ForeignKey(default='1',
                                    on_delete=django.db.models.deletion.CASCADE,
                                    related_name='blog_comments',

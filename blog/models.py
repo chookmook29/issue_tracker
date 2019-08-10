@@ -24,4 +24,4 @@ class Blog_comment(models.Model):
     text = models.TextField(verbose_name='Comment text')
 
     def __str__(self):
-        return str(self.ticket) + ' | ' + str(self.author)
+        return str(self.blog) + ' | ' + str(self.date)
