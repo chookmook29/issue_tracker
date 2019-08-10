@@ -61,7 +61,7 @@
 						<div class="comment">
 						<div class="date">{{ comment.created_date }}</div>
 						<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
-						<p class="small">{{ comment.text|linebreaks }}</p>
+						<p class="small">{{ comment.text }}</p>
 					</div>
 				{% empty %}
 					<p class="small">No comments here yet :(</p>
