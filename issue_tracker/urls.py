@@ -6,10 +6,10 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('charts/', views.home, name='charts'),
     path('info/', views.info, name='info'),
     path('blog/', include('blog.urls')),
-    path('ticket/', include('ticket.urls')),
+    path('', include('ticket.urls')),
     path('checkout/', include('checkout.urls')),
     path('', include('users.urls')),
     # Only for development and debug, user-uploaded media files from MEDIA_ROOT
