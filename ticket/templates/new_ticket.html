@@ -2,7 +2,7 @@
 {% block title%}New Ticket{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-	<div class="container text-center">
+	<div class="container">
 		<div class="col-md-6 offset-md-3">
 			<form method="POST" action="{% url 'add_ticket' %}">
 				{% csrf_token %}
@@ -10,7 +10,7 @@
 				<p>Errors</p>
 				{% endif %}
 				{{ form|crispy }}
-				<div class="text-center">
+				<div>
 					<button type="submit" class="btn btn-ticket">Add Ticket</button>
 				</div>
 			</form>
