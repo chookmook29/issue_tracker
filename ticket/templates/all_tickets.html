@@ -7,6 +7,25 @@
 	<div class="container text-center">
 		<h1>All Tickets</h1>
 		<div class="row">
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'home' %}">Recent</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'upvotes' %}">Upvoted</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'commented' %}">Commented</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'feature' %}">Feature</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'bug' %}">Bug</a>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
 		{% for ticket in all_tickets %}
 			<div class="card text-center mb-5 w-100">
 				<div class="card-header">

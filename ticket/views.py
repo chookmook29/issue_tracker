@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.utils import timezone
 from django.conf import settings
 from django.contrib import messages
+from django.db.models import Count
 from .models import Ticket, Comment
 from .forms import CommentForm, TicketForm
 from users.models import CustomUser
@@ -71,5 +72,21 @@ def add_ticket(request):
 
 def all_tickets(request):
     """ Reverse order to make most upvoted ticket appear on top"""
+    all_tickets = Ticket.objects.order_by('pub_date').reverse()
+    return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
+
+def all_upvotes(request):
     all_tickets = Ticket.objects.order_by('upvotes').reverse()
+    return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
+
+def all_commented(request):
+    all_tickets = Ticket.objects.annotate(num_comments=Count('comments')).order_by('-num_comments')
+    return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
+
+def all_feature(request):
+    all_tickets = Ticket.objects.filter(ticket_type='Feature')
+    return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
+
+def all_bug(request):
+    all_tickets = Ticket.objects.filter(ticket_type='Bug')
     return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
