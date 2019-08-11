@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	</head>
 	<body {% block bg %}class="d-flex flex-column base_bg"{% endblock %}>
-		<div class="text-center">
+		<header class="text-center">
 			{% if messages %}
 				{% for message in messages %}
 					<div class="alert alert-secondary alert-dismissable" role="alert">
@@ -23,7 +23,7 @@
 						{{ message }}
 				 {% endfor %}
 			{% endif %}
-					</div>
+		</header>
 		<nav class="navbar navbar-expand-lg navbar-light on-top">
 			<h3><a class="navbar-brand custom-link" href="{% url 'home' %}"><i class="fas fa-ticket-alt"></i> Issue Tracker</a></h3>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,15 +62,15 @@
 			</div>
 		</nav>
 		<div class="py-5"></div>
-		<div id="page-content">
+		<main id="page-content">
 	{% block content %}
 	{% endblock %}
-		</div>
-		<div id="sticky-footer" class="container">
+		</main>
+		<footer id="sticky-footer" class="container">
 			<div class="row">
 				<a class="col-6" href="{% url 'info' %}">Info</a><p class="paragraph col-6"><span class="float-right">&#169; PeteCh {% now 'Y' %}</span></p>
 			</div>
-		</div>
+		</footer>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
