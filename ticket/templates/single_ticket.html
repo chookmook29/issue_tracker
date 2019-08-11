@@ -37,7 +37,7 @@
 					<p>I have this too: {{ ticket.upvotes }}</p>
 				{% endif %}
 				{% if ticket.ticket_type == 'Feature' %}
-					<div class="mb-3">
+					<div>
 						<!-- For better user experience checkout.js library used -->
 						<form action="{% url 'show_single' ticket.id %}" method="post">
 							{% csrf_token %}
@@ -52,52 +52,60 @@
 							// Hide default stripe button
 							document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
 							</script>
-							<button type="submit" class="btn btn-ticket mb-2">Upvote for £5.00</button>
+							<button type="submit" class="btn btn-ticket">Upvote for £5.00</button>
+							<!-- If statement below prevents users from deleting someone else's tickets-->
+							{% if user.is_staff == True %}
+								<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket">Delete</a>
+							{% endif %}
 						</form>
 				{% else %}
-					<a href="{% url 'checkout' ticket.id %}" class="btn btn-ticket mb-2">Upvote</a>
-				{% endif %}
-						{% for comment in comments %}
-						<div class="comment">
-						<div class="date">{{ comment.created_date }}</div>
-						<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
-						<p class="small">{{ comment.text }}</p>
-					</div>
-				{% empty %}
-					<p class="small">No comments here yet :(</p>
-				{% endfor %}
-				{% if user.is_authenticated %}
-				<!-- Comments only for registered users -->
-				<a href="{% url 'add_comment' pk=ticket.pk %}" class="btn btn-ticket mb-3">Add comment</a>
-				{% endif %}
-				<div class="text-center">
-					<span class="step-links">
-					{% if comments.has_previous %}
-					<!-- Paginator settings -->
-					<a href="?page=1">&laquo; first</a>
-					<a href="?page={{ comments.previous_page_number }}">previous</a>
-					{% endif %}
-
-					<span class="current">
-					Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
-					</span>
-
-					{% if comments.has_next %}
-					<a href="?page={{ comments.next_page_number }}">next</a>
-					<a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
-					{% endif %}
-					</span>
-				</div>
-				<div class="container my-2">
+					<a href="{% url 'checkout' ticket.id %}" class="btn btn-ticket">Upvote</a>
 					<!-- If statement below prevents users from deleting someone else's tickets-->
 					{% if user.is_staff == True %}
-						<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket my-2">Delete</a>
+						<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket">Delete</a>
 					{% endif %}
-					<a href="{% url 'home' %}" class="btn btn-ticket text-center my-2">Home</a>
-				</div>
+				{% endif %}
 				</div>
 			</div>
-				<div class="card-footer text-muted">{{ ticket.pub_date }}</div>
-				{% endif %}
-		</div>	
+				<div class="card-footer text-muted">{{ ticket.pub_date }}</div></div><br>
+		<div class="container">
+			<div class="card text-center">
+				<h5 class="card-title pt-3">Comments:</h5>
+				{% for comment in comments %}
+							<div class="comment">
+							<div class="date">{{ comment.created_date }}</div>
+							<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
+							<p class="small">{{ comment.text }}</p>
+						</div>
+					{% empty %}
+						<p class="small">No comments here yet :(</p>
+					{% endfor %}
+					
+					<div class="text-center">
+						<span class="step-links">
+						{% if comments.has_previous %}
+						<!-- Paginator settings -->
+						<a href="?page=1">&laquo; first</a>
+						<a href="?page={{ comments.previous_page_number }}">previous</a>
+						{% endif %}
+						<span class="current">
+						Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+						</span>
+						{% if comments.has_next %}
+						<a href="?page={{ comments.next_page_number }}">next</a>
+						<a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
+						{% endif %}
+						</span>
+					</div>
+					<div class="container my-2">
+						{% if user.is_authenticated %}
+						<!-- Comments only for registered users -->
+						<a href="{% url 'add_comment' pk=ticket.pk %}" class="btn btn-ticket my-2">Add comment</a>
+						{% endif %}
+						<a href="{% url 'home' %}" class="btn btn-ticket text-center my-2">Home</a>
+					</div>
+			</div>
+					{% endif %}
+		</div>
+	</div>	
 {% endblock %}
