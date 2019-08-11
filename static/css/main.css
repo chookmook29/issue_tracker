@@ -85,8 +85,8 @@ body {
 }
 .status {
 	float: left;
-	margin: 0 0.2rem 0 0.2rem;
-	padding: 0.2rem;
+	margin: 0 0.2rem;
+	padding: 0.2rem 0.4rem;
 	font-size: 0.7rem;
 	border-radius: 0.3rem;
 	color: white;
