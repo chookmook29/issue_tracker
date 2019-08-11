@@ -57,6 +57,13 @@ body {
 	font-family: 'Roboto';
 	height: 100%;
 }
+a, a:hover {
+	color: black;
+	text-decoration: underline;
+}
+.custom-link {
+	text-decoration: none;
+}
 .base_bg {
 	background: url("/static/img/background.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -69,6 +76,7 @@ body {
 }
 .btn-ticket {
 	border-color: black;
+	text-decoration: none;
 }
 .upvote {
 	color: #ffc107;

@@ -52,7 +52,7 @@
 							// Hide default stripe button
 							document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
 							</script>
-							<button type="submit" class="btn btn-ticket">Upvote for £5.00</button>
+							<button type="submit" class="btn btn-danger">Upvote for £5.00</button>
 							<!-- If statement below prevents users from deleting someone else's tickets-->
 							{% if user.is_staff == True %}
 								<a href="{% url 'delete' ticket_id=ticket.pk %}" class="btn btn-ticket">Delete</a>
