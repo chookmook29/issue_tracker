@@ -75,17 +75,23 @@ def all_tickets(request):
     all_tickets = Ticket.objects.order_by('pub_date').reverse()
     return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
 
+
 def all_upvotes(request):
     all_tickets = Ticket.objects.order_by('upvotes').reverse()
     return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
 
+
 def all_commented(request):
-    all_tickets = Ticket.objects.annotate(num_comments=Count('comments')).order_by('-num_comments')
+    all_tickets = Ticket.objects.annotate(num_comments=Count(
+                                          'comments')).order_by(
+                                          '-num_comments')
     return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
+
 
 def all_feature(request):
     all_tickets = Ticket.objects.filter(ticket_type='Feature')
     return render(request, 'all_tickets.html', {'all_tickets': all_tickets})
+
 
 def all_bug(request):
     all_tickets = Ticket.objects.filter(ticket_type='Bug')
