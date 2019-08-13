@@ -3,6 +3,11 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
 
     class Meta(UserCreationForm):
         model = CustomUser
@@ -10,6 +15,11 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
 
     class Meta:
         model = CustomUser
