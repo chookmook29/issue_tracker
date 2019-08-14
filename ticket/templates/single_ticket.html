@@ -72,15 +72,14 @@
 			<div class="card text-center">
 				<h5 class="card-title pt-3">Comments:</h5>
 				{% for comment in comments %}
-							<div class="comment">
-							<div class="date">{{ comment.created_date }}</div>
-							<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
-							<p class="small">{{ comment.text }}</p>
-						</div>
-					{% empty %}
-						<p class="small">No comments here yet :(</p>
-					{% endfor %}
-					
+					<div class="comment">
+						<div class="date">{{ comment.created_date }}</div>
+						<div class="text-muted">{{ comment.author }} {{ comment.date }}</div>
+						<p class="small">{{ comment.text }}</p>
+					</div>
+				{% empty %}
+					<p class="small">No comments here yet :(</p>
+				{% endfor %}
 					<div class="text-center">
 						<span class="step-links">
 						{% if comments.has_previous %}
@@ -104,8 +103,8 @@
 						{% endif %}
 					</div>
 				</div>
-			{% endif %}
-		</div>
+						{% endif %}
+			</div>
 		<div>
 			<a href="{% url 'home' %}" class="nav-link text-center my-2">Home</a>
 		</div>
