@@ -58,7 +58,7 @@
                     .attr("height", height)
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-                // Django template engine used to generate some array entries, made larger by adding numbers. Shortened to 10 characters, otherwise wouldn't fit the graph
+                // Django template engine is used to generate some array entries, made larger by adding numbers. Shortened to 10 characters, otherwise wouldn't fit the graph
                 var data = { {% for data in dataset %}"{{ data.username|truncatechars:10 }}": "2{{ data.contributions }}" , {% endfor %} }
                 // Using Django's templating, colour range is being generated based on amount of data entries
                 var color = d3.scaleOrdinal()
@@ -103,7 +103,7 @@
             </script>
         </div>
         <div class="w-100 text-center">
-            <a href="{% url 'home' %}"  class="nav-link my-2">Home</a>
+            <a href="{% url 'home' %}" class="nav-link my-2">Home</a>
         </div>
     </div>
 {% endblock %}

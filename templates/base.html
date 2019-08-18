@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title %}{% endblock %}</title><!-- title changes with every template -->
+        <title>{% block title %}{% endblock %}</title><!-- title changes with every template, easier to modify -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--  browser will render the width of the page at the width of its own screen, needed for responsive design -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     </head>
     <body {% block bg %}class="d-flex flex-column base_bg"{% endblock %}>
+        <!-- body class template changes to no background image class when there are many elements on screen, for example in all_tickets.html -->
         <header class="text-center">
             <div>
                 {% if messages %}
