@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block title%}All Entries{% endblock %}
 {% block bg %}
-	class="d-flex flex-column child_bg"
+    class="d-flex flex-column child_bg"
 {% endblock %}
 {% block content %}
-	<div class="container text-center">
+    <div class="container text-center">
 {% for blog in all_blogs.all %}
-		<div class="card mb-5">
-			<img class="card-img-top small-img" src="{{ blog.image.url }}" alt="Blog entry image">
-			<div class="card-body">
-				<h5 class="card-title">{{ blog.title }}</h5>
-				<p class="card-text">{{ blog.body }}</p>
-				<a href="{% url 'single_blog' blog.id %}" class="btn btn-ticket">Read more</a>
-			</div>
-		</div>
+        <div class="card mb-5">
+            <img class="card-img-top small-img" src="{{ blog.image.url }}" alt="Blog entry image">
+            <div class="card-body">
+                <h5 class="card-title">{{ blog.title }}</h5>
+                <p class="card-text">{{ blog.body }}</p>
+                <a href="{% url 'single_blog' blog.id %}" class="btn btn-ticket">Read more</a>
+            </div>
+        </div>
 {% endfor %}
-		<a href="{% url 'home' %}"  class="nav-link my-2">Home</a>
-	</div>
+        <a href="{% url 'home' %}"  class="nav-link my-2">Home</a>
+    </div>
 {% endblock %}

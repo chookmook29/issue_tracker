@@ -1,56 +1,56 @@
 {% extends 'base.html' %}
 {% block title%}Single Entry{% endblock %}
 {% block content %}
-	<div class="container text-center">
-		<div class="card mb-3 pt-3">
-			<h3>{{ blog.title }}</h3>
-			<div>
-				<img src={{ blog.image.url }} class="img-fluid mb-3" alt="Blog entry image"></img>
-			</div>
-			<p class="my-2">{{ blog.body }}</p>
-			<p class="my-2">{{ blog.pub_date }}</p>
-			<p>Author: {{ blog.author }}</p>
-		</div>
-	</div>
-	<div class="container">
-			<div class="card text-center">
-				<h5 class="card-title pt-3">Comments:</h5>
-				{% for comment in comments %}
-				    <div class="comment">
-				        <div class="date">{{ comment.created_date }}</div>
-				        <strong>{{ comment.author }}</strong>
-				        <strong>{{ comment.date }}</strong>
-				        <p class="small">{{ comment.text }}</p>
-				    </div>
-				{% empty %}
-			    	<p class="small">No comments here yet :(</p>
-				{% endfor %}
-					<div class="text-center">
-					    <span class="step-links">
-					        {% if comments.has_previous %}
-					        	
-					            <a href="?page=1">&laquo; first</a>
-					            <a href="?page={{ comments.previous_page_number }}">previous</a>
-					        {% endif %}
-					        	
-					        <span class="current">
-					            Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
-					        </span>
+    <div class="container text-center">
+        <div class="card mb-3 pt-3">
+            <h3>{{ blog.title }}</h3>
+            <div>
+                <img src={{ blog.image.url }} class="img-fluid mb-3" alt="Blog entry image"></img>
+            </div>
+            <p class="my-2">{{ blog.body }}</p>
+            <p class="my-2">{{ blog.pub_date }}</p>
+            <p>Author: {{ blog.author }}</p>
+        </div>
+    </div>
+    <div class="container">
+            <div class="card text-center">
+                <h5 class="card-title pt-3">Comments:</h5>
+                {% for comment in comments %}
+                    <div class="comment">
+                        <div class="date">{{ comment.created_date }}</div>
+                        <strong>{{ comment.author }}</strong>
+                        <strong>{{ comment.date }}</strong>
+                        <p class="small">{{ comment.text }}</p>
+                    </div>
+                {% empty %}
+                    <p class="small">No comments here yet :(</p>
+                {% endfor %}
+                    <div class="text-center">
+                        <span class="step-links">
+                            {% if comments.has_previous %}
+                                
+                                <a href="?page=1">&laquo; first</a>
+                                <a href="?page={{ comments.previous_page_number }}">previous</a>
+                            {% endif %}
+                                
+                            <span class="current">
+                                Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+                            </span>
 
-					        {% if comments.has_next %}
-					            <a href="?page={{ comments.next_page_number }}">next</a>
-					            <a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
-					        {% endif %}
-					    </span>
-					</div>
-					{% if user.is_authenticated %}
-					<div>
-						<a href="{% url 'blog_comment' pk=blog.pk %}" class="btn btn-ticket my-2">Add comment</a>
-					</div>
-					{% endif %}
-					</div>
-			<div class="text-center">
-				<a href="{% url 'home' %}"  class="nav-link my-2">Home</a>
-			</div>
-		</div>
+                            {% if comments.has_next %}
+                                <a href="?page={{ comments.next_page_number }}">next</a>
+                                <a href="?page={{ comments.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div>
+                        <a href="{% url 'blog_comment' pk=blog.pk %}" class="btn btn-ticket my-2">Add comment</a>
+                    </div>
+                    {% endif %}
+                    </div>
+            <div class="text-center">
+                <a href="{% url 'home' %}"  class="nav-link my-2">Home</a>
+            </div>
+        </div>
 {% endblock %}

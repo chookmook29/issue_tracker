@@ -2,20 +2,20 @@
 {% block title%}Change{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-	<div class="container">
-		<h3 class="text-center">{{ user_account.username }}'s details</h3>
-		<div class="col-md-6 offset-md-3">
-			<form method="POST" action="{% url 'change' %}">
-			{% csrf_token %}
-			{% if form.errors %}
-				<p>Errors</p>
-			{% endif %}
-			{{ form|crispy }}
-				<button type="submit" class="btn btn-ticket">Change details</button>
-			</form>
-		</div>
-	</div>
-	<div class="text-center">
-		<a href="{% url 'home' %}" class="nav-link text-center my-2">Home</a>
-	</div>
+    <div class="container">
+        <h3 class="text-center">{{ user_account.username }}'s details</h3>
+        <div class="col-md-6 offset-md-3">
+            <form method="POST" action="{% url 'change' %}">
+            {% csrf_token %}
+            {% if form.errors %}
+                <p>Errors</p>
+            {% endif %}
+            {{ form|crispy }}
+                <button type="submit" class="btn btn-ticket">Change details</button>
+            </form>
+        </div>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'home' %}" class="nav-link text-center my-2">Home</a>
+    </div>
 {% endblock %}

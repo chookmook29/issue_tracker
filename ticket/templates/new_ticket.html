@@ -2,19 +2,19 @@
 {% block title%}New Ticket{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-	<div class="container">
-		<div class="col-md-6 offset-md-3">
-			<form method="POST" action="{% url 'add_ticket' %}">
-				{% csrf_token %}
-				{% if form.errors %}
-				<p>Errors</p>
-				{% endif %}
-				{{ form|crispy }}
-				<div>
-					<button type="submit" class="btn btn-ticket">Add Ticket</button>
-				</div>
-			</form>
-		</div>
-		<a href="{% url 'home' %}" class="nav-link text-center my-2">Home</a>
-	</div>
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST" action="{% url 'add_ticket' %}">
+                {% csrf_token %}
+                {% if form.errors %}
+                <p>Errors</p>
+                {% endif %}
+                {{ form|crispy }}
+                <div>
+                    <button type="submit" class="btn btn-ticket">Add Ticket</button>
+                </div>
+            </form>
+        </div>
+        <a href="{% url 'home' %}" class="nav-link text-center my-2">Home</a>
+    </div>
 {% endblock %}
