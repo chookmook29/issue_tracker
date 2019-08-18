@@ -2,10 +2,11 @@
 
 ### Description
 
-The primary entity in the Issue Tracker is a ticket describing a user’s issue, and similar to Github’s issue tracker, it allows users to create tickets, comment on tickets, and show the status of the ticket (e.g. ‘to do,’ ‘doing,’ or ‘done’). As mentioned, issues come in two varieties – ‘bugs’ (which I’ll fix for free, eventually), and ‘features’ which are only developed if enough money is offered. Users will be able to upvote bugs (signifying ‘I have this too’), and upvote feature requests (signifying ‘I want to have this too’). While upvoting bugs is free, to upvote a feature request, users would need to pay some money to pay for time in working on it. In turn, at least 50% of time working will be spend on developing the highest-paid feature.
-To offer transparency there is a page that contains some graphs showing how many bugs or features are tended to on a daily, weekly and monthly basis, as well as the highest-voted bugs and features.
+Issue Tracker is a web application for handling user's issues and demands. It allows users to create tickets, comments on them and show its status. It can display two kinds of tickets: bugs and features. Features are upvoted by users willing to spend money on them, bugs are upvoted for free. To grab developers attention tickets are sorted by amount of upvotes. There are also three different statuses depending on stage of development: ‘to do,’ ‘doing,’ or ‘done’. There is also a subpage allowing users to check which one of them are most active and who is biggest contributor.
 
 ## UX
+
+I wanted to build a user-friendly and user-oriented web application. My main inspiration was Reddit and its ascetic interface. This project was created with simplicity and responsiveness in mind. I tried to make functionalities obvious and easy to use. I also wanted to make upvoting easy, so it's represented in clear, visually appealing way. My goal was to make browsing, adding, updating and deleting user's tickets straight-forward and enjoyable, especially in mobile mode. Thanks to its design practices and clear concept I believe this web application can fulfill it's purpose.
 
 #### Users stories
 
