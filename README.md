@@ -10,6 +10,22 @@ I wanted to build a user-friendly and user-oriented web application. My main ins
 
 #### Users stories
 
+User stories that helped me developing this project: 
+
+- As a user, I want to add new tickets, so I share them with other users and developers.
+- As a user, I want to delete my old tickets.
+- As a user, I want to vote on tickets, so other users/developers know how important is given ticket.
+- As a user, I want to know other people's opinion about any given ticket.
+- As a user, I want to sort tickets using particular method (recent, most commented, type etc.).
+- As a user, I want to easily access tickets of particular type.
+- As a user, I want to read some additional info about the project.
+- As a user, I want to be able to see how much top users contributed.
+- As a user, I want to view updates from developers in their blog.
+- As a user, I want to comment developer's blog entries.
+- As a user, I want to change my account details.
+- As a developer, I want to keep in touch with users via blog.
+- As an administrator, I want to have control over content of the website.
+
 ### Wireframes
 
 Examples of wireframes I've used for this project:
