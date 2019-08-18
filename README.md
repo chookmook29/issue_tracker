@@ -76,10 +76,14 @@ Password form field at account details still being displayed even after explicit
     - Adjusting elements of project's frontend.
 - [PostgreSQL](https://www.postgresql.org/)
     - Postgres database hosted by AWS used by Heroku.
+- [Flake8](http://flake8.pycqa.org/)
+    - Used for Python linting.
 - [PEP8](http://pep8online.com/)
     - Used to check python syntax errors.
 - [JSlint](https://www.jslint.com/)
     - Used to check JS snippet.
+-  [Faker](https://github.com/joke2k/faker)
+    - Used for generating variety of generic content.
 - [CSSlint](http://csslint.net/)
     - Check for CSS errors.
 - [Font Awesome](https://fontawesome.com/)
