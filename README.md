@@ -130,64 +130,64 @@ This web application has been manually tested with different scenarios that the 
 11. Change user details
 
 1. Log in
-    1. Click on "Log In" to be redirected to form with "user" and "password" fields.
-    2. Sign in with username and password of super user.
-    3. Click "Log In" button to be redirected back to homepage.
-    2. Check the user is logged in by seeing if "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" are visible in the navbar.
+    a. Click on "Log In" to be redirected to form with "user" and "password" fields.
+    b. Sign in with username and password of super user.
+    c. Click "Log In" button to be redirected back to homepage.
+    d. Check the user is logged in by seeing if "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" are visible in the navbar.
 
 2. Log out:
-    1. Make sure you are signed in. 
-    2. Click on 'Log Out' navbar element.
-    3. Verify that navbar has changed(no "Sign Out", "My Recipes" & "Add Recipes" link). Instead, only five initial links are visible.
-    4. Click browser's back button. Verify, that you can't see "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" anymore.
+    a. Make sure you are signed in. 
+    b. Click on 'Log Out' navbar element.
+    c. Verify that navbar has changed(no "Sign Out", "My Recipes" & "Add Recipes" link). Instead, only five initial links are visible.
+    d. Click browser's back button. Verify, that you can't see "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" anymore.
 
 3. Sign Up:
-    1. Similar to logging in, use "Sign Up" link to register new user.
-    2. Check the user is logged in by seeing if "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" are visible in the navbar.
+    a. Similar to logging in, use "Sign Up" link to register new user.
+    b. Check the user is logged in by seeing if "All Tickets", "New Ticket", "Blog", "Your Account" and "Logout" are visible in the navbar.
 
 4. Create ticket
-    1. Click on "New Ticket" (when logged in).
-    2. Add ticket title, text and decide the type.
-    3. Click on "Add Ticket" to be redirected to index page.
+    a. Click on "New Ticket" (when logged in).
+    b. Add ticket title, text and decide the type.
+    c. Click on "Add Ticket" to be redirected to index page.
 
 5. Create comment
-    1. Navigate to "All Tickets" and click on "View Details".
-    2. Click on "Add comment" button.
-    3. Type in the text and press "Send" button.
-    4. Check if you are redirected to index page message is displayed.
+    a. Navigate to "All Tickets" and click on "View Details".
+    b. Click on "Add comment" button.
+    c. Type in the text and press "Send" button.
+    d. Check if you are redirected to index page message is displayed.
 
 6. Upvote ticket
-    1. Navigate to "All Tickets" and click on one of the tickets with "Bug" tag.
-    2. Click on "Upvote" button.
-    3. Check if thank you screen is displayed.
-    4. Check if you're being redirected to index page.
+    a. Navigate to "All Tickets" and click on one of the tickets with "Bug" tag.
+    b. Click on "Upvote" button.
+    c. Check if thank you screen is displayed.
+    d. Check if you're being redirected to index page.
 
 7. Pay for upvoting feature ticket
-    1. Navigate to single ticket details with a "Feature" tag.
-    2. Press on "Pay to upvote" button.
-    3. Check if given ticket got extra upvote.
-    4. Check if index page pie chart has changed, your nickname's chart part has changed.
+    a. Navigate to single ticket details with a "Feature" tag.
+    b. Press on "Pay to upvote" button.
+    c. Check if given ticket got extra upvote.
+    d. Check if index page pie chart has changed, your nickname's chart part has changed.
 
 8. Delete ticket
-    1. If you created new ticket using "New Ticket" link navigate to your ticket.
-    2. Press "Delete" button on ticket details page.
-    3. Check if your ticket disappeared from "All Tickets" tab.
+    a. If you created new ticket using "New Ticket" link navigate to your ticket.
+    b. Press "Delete" button on ticket details page.
+    c. Check if your ticket disappeared from "All Tickets" tab.
 
 9. Create blog entry
-    1. If you are admin user go to [admin address](http://issue-tracker-pch.herokuapp.com/admin).
-    2. Go to blog tab.
-    3. Add new blog entry with image.
-    4. To check if it was added go back to the website and navigate to Blog link.
+    a. If you are admin user go to [admin address](http://issue-tracker-pch.herokuapp.com/admin).
+    b. Go to blog tab.
+    c. Add new blog entry with image.
+    d. To check if it was added go back to the website and navigate to Blog link.
 
 10. Comment blog entry
-    1. Enter "All Blogs" and show details of single entry.
-    2. Press "Add Comment" and enter text.
-    3. Post it and check if it was added below blog entry.
+    a. Enter "All Blogs" and show details of single entry.
+    b. Press "Add Comment" and enter text.
+    c. Post it and check if it was added below blog entry.
 
 11. Change user details
-    1. From main page go to "Your Account".
-    2. Change email, first name and second name.
-    3. Post changes using button.
+    a. From main page go to "Your Account".
+    b. Change email, first name and second name.
+    c. Post changes using button.
 
 ### User testing
 
@@ -255,7 +255,13 @@ python manage.py runserver
 
 ### Content
 
+- Images where taken from [Shutterstock.com](https://www.shutterstock.com/)
+- Font was taken from [FontSquirrel.com](https://www.fontsquirrel.com/)
+- Icons taken from [Font Awsome](https://fontawesome.com/) 
+
 ### Media
+
+- The background photo used in this site were obtained from [Shutterstock.com](https://www.shutterstock.com/)
 
 ### Acknowledgements
 
