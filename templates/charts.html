@@ -8,7 +8,10 @@
             <script type="text/javascript">
                 // List of words
                 // Django template engine used to generate some array entries, made larger by adding numbers. Shortened to 9 characters, otherwise wouldn't fit the graph
-                var usernames = [{% for data in dataset %}{username: "{{ data.username|truncatechars:8 }}", size: "3{{ data.amount_comments }}"},{% endfor %}];
+                var usernames = [{% for data in dataset %} {
+                    username: "{{ data.username|truncatechars:8 }}",
+                    size: "3{{ data.amount_comments }}"
+                }, {% endfor %}];
                 var width = 350,
                     height = 350;
                 // append the svg object to the body of the page
@@ -16,42 +19,57 @@
                     .attr("width", width)
                     .attr("height", height)
                     .append("g");
-                // Constructs a new cloud layout instance. It run an algorythm to find the position of words that suits your requirements
+                // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits requirements
                 // Wordcloud features that are different from one word to the other must be here
                 var layout = d3.layout.cloud()
-                  .size([width, height])
-                  .words(usernames.map(function(d) { return {text: d.username, size:d.size}; }))
-                  .padding(20)        //space between words
-                  .rotate(function() { return ~~(Math.random() * 2) * 90; })
-                  .fontSize(function(d) { return d.size; })      // font size of words
-                  .on("end", draw);
+                    .size([width, height])
+                    .words(usernames.map(function(d) {
+                        return {
+                            text: d.username,
+                            size: d.size
+                        };
+                    }))
+                    .padding(20) //space between words
+                    .rotate(function() {
+                        return ~~(Math.random() * 2) * 90;
+                    })
+                    .fontSize(function(d) {
+                        return d.size;
+                    }) // font size of words
+                    .on("end", draw);
                 layout.start();
                 // This function takes the output of 'layout' above and draw the words
                 // Wordcloud features that are THE SAME from one word to the other can be here
                 function draw(words) {
-                  svg
-                    .append("g")
-                    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-                    .selectAll("text")
-                    .data(words)
-                    .enter().append("text")
-                    .style("font-size", function(d) { return d.size; })
-                    .style("text-shadow", "0px 0px 3px #000000")
-                    .style("fill", function() { return '#'+(Math.random()*0xFFFFFF<<0).toString(16); })//Random colour for every entry
-                    .attr("text-anchor", "middle")
-                    .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                    })
-                    .text(function(d) { return d.text; });
-                    }
+                    svg
+                        .append("g")
+                        .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                        .selectAll("text")
+                        .data(words)
+                        .enter().append("text")
+                        .style("font-size", function(d) {
+                            return d.size;
+                        })
+                        .style("text-shadow", "0px 0px 3px #000000")
+                        .style("fill", function() {
+                            return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+                        }) //Random colour for every entry
+                        .attr("text-anchor", "middle")
+                        .attr("transform", function(d) {
+                            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                        })
+                        .text(function(d) {
+                            return d.text;
+                        });
+                }
             </script>
             <script type="text/javascript">
-                // set the dimensionsof the graph
+                // Set the dimensions of the graph
                 var width = 350
-                    height = 350
-                // The radius of the pieplot is half the width or half the height (smallest one)
+                var height = 350
+                // The radius of the pie plot is half the width or half the height (smallest one)
                 var radius = Math.min(width, height) / 2
-                // append the svg object to the div called 'my_dataviz'
+                // Append the svg object to the div called 'my_dataviz'
                 var svg = d3.select("#my_dataviz2")
                     .append("svg")
                     .attr("width", width)
@@ -59,38 +77,45 @@
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
                 // Django template engine is used to generate some array entries, made larger by adding numbers. Shortened to 10 characters, otherwise wouldn't fit the graph
-                var data = { {% for data in dataset %}"{{ data.username|truncatechars:9 }}": "2{{ data.contributions }}" , {% endfor %} }
+                var data = { {% for data in dataset %}"{{ data.username|truncatechars:9 }}": "2{{ data.contributions }}" , {% endfor %}}
                 // Using Django's templating, colour range is being generated based on amount of data entries
                 var color = d3.scaleOrdinal()
                     .domain(data)
-                    .range([ {% for data in dataset %}('#'+(Math.random()*0xFFFFFF<<0).toString(16)),{% endfor %}]);
+                    .range([{% for data in dataset %}('#' + (Math.random() * 0xFFFFFF << 0).toString(16)), {% endfor %}]);
                 // Compute the position of each group on the pie:
                 var pie = d3.pie()
-                    .value(function(d) {return d.value; })
+                    .value(function(d) {
+                        return d.value;
+                    })
                 var data_ready = pie(d3.entries(data))
                 // Now I know that group A goes from 0 degrees to x degrees and so on.
-                // shape helper to build arcs:
+                // Shape helper to build arcs:
                 var arcGenerator = d3.arc()
-                  .innerRadius(0)
-                  .outerRadius(radius)
-                // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+                    .innerRadius(0)
+                    .outerRadius(radius)
+                // Each part of the pie is a path that we build using the arc function.
                 svg
                     .selectAll('mySlices')
                     .data(data_ready)
                     .enter()
                     .append('path')
                     .attr('d', arcGenerator)
-                    .attr('fill', function(d){ return(color(d.data.key)) })
+                    .attr('fill', function(d) {
+                        return (color(d.data.key))
+                    })
                     .style("stroke-width", "2px")
                     .style("opacity", 0.7)
-                // Now add the annotation. Use the centroid method to get the best coordinates
                 svg
                     .selectAll('mySlices')
                     .data(data_ready)
                     .enter()
                     .append('text')
-                    .text(function(d){ return d.data.key})
-                    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+                    .text(function(d) {
+                        return d.data.key
+                    })
+                    .attr("transform", function(d) {
+                        return "translate(" + arcGenerator.centroid(d) + ")";
+                    })
                     .attr('fill', "white")
                     .style("text-shadow", "0px 0px 3px #000000")
                     .style("text-anchor", "middle")
