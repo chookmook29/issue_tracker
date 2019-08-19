@@ -43,7 +43,8 @@
                 function draw(words) {
                     svg
                         .append("g")
-                        .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                        .attr("transform", 
+                              "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
                         .selectAll("text")
                         .data(words)
                         .enter().append("text")
@@ -77,11 +78,13 @@
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
                 // Django template engine is used to generate some array entries, made larger by adding numbers. Shortened to 10 characters, otherwise wouldn't fit the graph
-                var data = { {% for data in dataset %}"{{ data.username|truncatechars:9 }}": "2{{ data.contributions }}" , {% endfor %}}
+                var data = { {% for data in dataset %}"{{ data.username|truncatechars:9 }}": 
+                    "2{{ data.contributions }}" , {% endfor %}}
                 // Using Django's templating, colour range is being generated based on amount of data entries
                 var color = d3.scaleOrdinal()
                     .domain(data)
-                    .range([{% for data in dataset %}('#' + (Math.random() * 0xFFFFFF << 0).toString(16)), {% endfor %}]);
+                    .range([{% for data in dataset %}
+                    ('#' + (Math.random() * 0xFFFFFF << 0).toString(16)), {% endfor %}]);
                 // Compute the position of each group on the pie:
                 var pie = d3.pie()
                     .value(function(d) {
