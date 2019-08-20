@@ -104,10 +104,10 @@ a, a:hover {
 	z-index: 1;
 	right: 0;
 }
-#sticky-footer {
+.sticky-footer {
 	flex-shrink: none;
 }
-#page-content {
+.page-content {
 	flex: 1 0 auto;
 }
 #div_id_password {

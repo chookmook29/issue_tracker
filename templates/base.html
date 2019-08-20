@@ -66,11 +66,11 @@
         </nav>
         </header>
         <div class="py-5"></div>
-        <main id="page-content">
+        <main class="page-content">
     {% block content %}
     {% endblock %}
         </main>
-        <footer id="sticky-footer" class="container">
+        <footer id="sticky-footer" class="container sticky-footer">
             <div class="row">
                 <a class="col-6" href="{% url 'info' %}">Info</a><p class="paragraph col-6"><span class="float-right">&#169; PeteCh {% now 'Y' %}</span></p>
             </div>
