@@ -1,6 +1,6 @@
 # Issue Tracker
 
-### Description
+## Description
 
 Issue Tracker is a web application for handling user's issues and demands. It allows users to create tickets, comments on them and show its status. It can display two kinds of tickets: bugs and features. Features are upvoted by users willing to spend money on them, bugs are upvoted for free. To grab developers attention tickets are sorted by amount of upvotes. There are also three different statuses depending on stage of development: ‘to do,’ ‘doing,’ or ‘done’. There is also a subpage allowing users to check which one of them are most active and who is biggest contributor.
 

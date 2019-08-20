@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l18=*-$k-x!lu)x+^lt8k3cm=0j3mm+ugoqmi*e0l2h49bv)m%'
 
 # Switched off in production
-DEBUG = True
+DEBUG = False
 
 # Left empty because it doesn't affect Heroku deployment
 ALLOWED_HOSTS = []
@@ -65,17 +65,13 @@ WSGI_APPLICATION = 'issue_tracker.wsgi.application'
 # Database details as environmental variables for security
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd4bsraie2juttf',
-        'USER': 'ohgtupwejcrokm',
-        'PASSWORD':
-        '557bc52b2c5a9421686e1c7550306901967b5f1f0cb8f5c1e3066eef68043ad5',
-        'HOST': 'ec2-54-217-208-105.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-        'URI':
-        'postgres://ohgtupwejcrokm:557bc52b2c5a9421686e1c7550306901967b5f1f0\
-         cb8f5c1e3066eef68043ad5@ec2-54-217-208-105.eu-west-1.compute.amazona\
-         ws.com:5432/d4bsraie2juttf',
+        'ENGINE': os.environ.get('DATABASE_ENGINE'),
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PSWD'),
+        'HOST': os.environ.get('DATABASE_HOST'),
+        'PORT': os.environ.get('DATABASE_PORT'),
+        'URI': os.environ.get('DATABASE_URL'),
     }
 }
 
