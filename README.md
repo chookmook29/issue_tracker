@@ -47,7 +47,7 @@ Examples of wireframes I've used for this project:
 
 - Blog app routes and templates naming are confusing (blog as entry) it needs reworking, but requires so many app and main project changes that it was left behind to be implemented post deployment.
 
-##Known Issues
+## Known Issues
 Password form field at account details still being displayed even after explicitly ordered not to in custom form class. Temporary work-around it is to add hidden status to that field block in css rules file.
 
 ## Technologies Used
