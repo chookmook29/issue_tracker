@@ -83,7 +83,7 @@
                 // Using Django's templating, colour range is being generated based on amount of data entries
                 var color = d3.scaleOrdinal()
                     .domain(data)
-                    .range([{% for data in dataset %}
+                    .range([{% for data in dataset_pie %}
                     ('#' + (Math.random() * 0xFFFFFF << 0).toString(16)), {% endfor %}]);
                 // Compute the position of each group on the pie:
                 var pie = d3.pie()
