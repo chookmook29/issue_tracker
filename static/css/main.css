@@ -3,6 +3,8 @@
 	src: url("/static/fonts/RobotoMono-Regular.ttf");
 }
 @media screen and (max-width: 575px) and (orientation: portrait){
+	/* Reason for fixing navbar is to prevent dropdown list from pushing document's other elements down.
+	When it's fixed, tickets are being scrolled underneath, so at least it's transparent to prevent user's confusion. */
 	.on-top {
 		position: fixed;
 		background-color: rgba(245,245,245, 0.7);
@@ -72,6 +74,9 @@ a, a:hover {
   	background-size: cover;
 }
 .child_bg {
+	/* Used only on two occasions, when viewport contains many elements.
+	Almost blank background makes it more readable for user. To abe able to change background,
+	base template had to be overwritten */
 	background-color: whitesmoke;
 }
 .btn-ticket {
@@ -110,6 +115,10 @@ a, a:hover {
 .page-content {
 	flex: 1 0 auto;
 }
+/* Element causing issues is password field showing up on "change account details" form using Django forms,
+this had to be disabled using passwords div id which shows up whenever Django form is invoked.
+Attempts to disable this field in forms.py file has failed.
+It's a "known issue" described in README.md */
 #div_id_password {
 	display: none;
 }
