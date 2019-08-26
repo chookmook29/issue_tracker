@@ -8,7 +8,7 @@
             <script type="text/javascript">
                 // List of words
                 // Django template engine used to generate some array entries, made larger by adding numbers. Shortened to 9 characters, otherwise wouldn't fit the graph
-                var usernames = [{% for data in dataset %} {
+                var usernames = [{% for data in dataset_cloud %} {
                     username: "{{ data.username|truncatechars:8 }}",
                     size: "3{{ data.amount_comments }}"
                 }, {% endfor %}];
@@ -78,7 +78,7 @@
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
                 // Django template engine is used to generate some array entries, made larger by adding numbers. Shortened to 10 characters, otherwise wouldn't fit the graph
-                var data = { {% for data in dataset %}"{{ data.username|truncatechars:9 }}": 
+                var data = { {% for data in dataset_pie %}"{{ data.username|truncatechars:9 }}": 
                     "2{{ data.contributions }}" , {% endfor %}}
                 // Using Django's templating, colour range is being generated based on amount of data entries
                 var color = d3.scaleOrdinal()
