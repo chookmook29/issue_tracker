@@ -13,4 +13,4 @@ def checkout(request, pk):
     ticket.save()
     # messages from django.contrib improve UX
     messages.success(request, ('Thank you for your payment!'))
-    return render(request, 'single_ticket.html', {'ticket': ticket})
+    return render(request, 'checkout.html', {'ticket': ticket})
