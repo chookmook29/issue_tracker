@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from ticket.models import Ticket
 from users.models import CustomUser
+from django.contrib import messages
 
 
 def checkout(request, pk):
@@ -10,4 +11,6 @@ def checkout(request, pk):
     user.save()
     ticket.upvotes += 1
     ticket.save()
-    return render(request, 'checkout.html', {'ticket': ticket})
+    # messages from django.contrib improve UX
+    messages.success(request, ('Thank you for your payment!'))
+    return render(request, 'single_ticket.html', {'ticket': ticket})
