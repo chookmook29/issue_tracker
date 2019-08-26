@@ -28,7 +28,8 @@ class Migration(migrations.Migration):
             model_name="ticket",
             name="progress",
             field=models.CharField(
-                choices=[("To do", "To do"), ("Doing", "Doing"), ("Done", "Done")],
+                choices=[("To do", "To do"),
+                         ("Doing", "Doing"), ("Done", "Done")],
                 default="1",
                 max_length=10,
             ),

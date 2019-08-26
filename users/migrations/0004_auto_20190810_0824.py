@@ -82,7 +82,8 @@ class Migration(migrations.Migration):
                                    digits and @/./+/-/_ only.",
                 max_length=150,
                 unique=True,
-                validators=[django.contrib.auth.validators.UnicodeUsernameValidator()],
+                validators=[django.contrib.auth.validators.
+                            UnicodeUsernameValidator()],
                 verbose_name="username",
             ),
         ),

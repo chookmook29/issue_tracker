@@ -86,7 +86,8 @@ def all_upvotes(request):
 
 
 def all_commented(request):
-    all_tickets = Ticket.objects.annotate(num_comments=Count("comments")).order_by(
+    all_tickets = Ticket.objects.annotate(num_comments=Count(
+        "comments")).order_by(
         "-num_comments"
     )
     return render(request, "all_tickets.html", {"all_tickets": all_tickets})

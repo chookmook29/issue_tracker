@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name="ticket", name="upvotes", field=models.IntegerField(default="0")
+            model_name="ticket", name="upvotes",
+            field=models.IntegerField(default="0")
         )
     ]

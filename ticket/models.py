@@ -14,11 +14,13 @@ class Ticket(models.Model):
     FEATURE = "Feature"
     TYPE_CHOICES = ((BUG, "Bug"), (FEATURE, "Feature"))
     pub_date = models.DateTimeField(default="2001-01-01")
-    progress = models.CharField(max_length=10, choices=STATUS_CHOICES, default="To do")
+    progress = models.CharField(max_length=10,
+                                choices=STATUS_CHOICES, default="To do")
     # Defaults needed for database migrations, otherwise errors
     upvotes = models.IntegerField(default="0")
     ticket_type = models.CharField(
-        max_length=10, choices=TYPE_CHOICES, default="1", verbose_name="Ticket type"
+        max_length=10, choices=TYPE_CHOICES,
+        default="1", verbose_name="Ticket type"
     )
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="1"
@@ -30,9 +32,11 @@ class Ticket(models.Model):
 
 class Comment(models.Model):
     ticket = models.ForeignKey(
-        "ticket.Ticket", on_delete=models.CASCADE, related_name="comments", default="1"
+        "ticket.Ticket", on_delete=models.CASCADE,
+        related_name="comments", default="1"
     )
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
     text = models.TextField(verbose_name="Comment text")
 

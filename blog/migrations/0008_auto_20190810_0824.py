@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name="blog", name="pub_date", field=models.DateTimeField(null=True)
+            model_name="blog", name="pub_date",
+            field=models.DateTimeField(null=True)
         )
     ]

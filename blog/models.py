@@ -17,9 +17,11 @@ class Blog(models.Model):
 
 class BlogComment(models.Model):
     blog = models.ForeignKey(
-        "blog.Blog", on_delete=models.CASCADE, related_name="blog_comments", default="1"
+        "blog.Blog", on_delete=models.CASCADE,
+        related_name="blog_comments", default="1"
     )
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
     text = models.TextField(verbose_name="Comment text")
 

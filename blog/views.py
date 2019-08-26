@@ -14,12 +14,14 @@ def blogs(request):
 def single_blog(request, pk):
     blog = Blog.objects.get(pk=pk)
     comment_list = (
-        BlogComment.objects.select_related().filter(blog_id=pk).order_by("-date")
+        BlogComment.objects.select_related().
+        filter(blog_id=pk).order_by("-date")
     )
     paginator = Paginator(comment_list, 4)
     page = request.GET.get("page")
     comments = paginator.get_page(page)
-    return render(request, "single_entry.html", {"blog": blog, "comments": comments})
+    return render(request, "single_entry.html",
+                  {"blog": blog, "comments": comments})
 
 
 def blog_comment(request, pk):
