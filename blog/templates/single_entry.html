@@ -7,7 +7,7 @@
             <div>
                 <img src={{ blog.image.url }} class="img-fluid mb-3" alt="Blog entry image"></img>
             </div>
-            <p class="my-2">{{ blog.body }}</p>
+            <p class="my-2 mx-auto w-75">{{ blog.body }}</p>
             <p class="my-2">{{ blog.pub_date }}</p>
             <p>Author: {{ blog.author }}</p>
         </div>
@@ -16,7 +16,7 @@
             <div class="card text-center">
                 <h5 class="card-title pt-3">Comments:</h5>
                 {% for comment in comments %}
-                    <div class="comment">
+                    <div class="comment mx-auto w-75">
                         <div class="date">{{ comment.created_date }}</div>
                         <strong>{{ comment.author }}</strong>
                         <strong>{{ comment.date }}</strong>
