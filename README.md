@@ -41,7 +41,22 @@ Examples of wireframes I've used for this project:
 
 ## Features
 
+ - Sign in/Register form - allows users to use existing account or create new account, adding to database. Followed by flash message and redirect.
+ - Edit user details form - Some user's details can be updated after registration.
+ - Add ticket form - user can create a new ticket, inserting it to database.
+ - Delete feature  - users that are logged in can delete ticket from database(only available for ticket's author or administrator in admin panel).
+ - Filter by different criteria - this will allow the user to be shown all tickets of a specific type(bug or feature).
+ - Sort by different criteria - user can sort existing tickets by date, number of upvotes and amount of comments.
+ - Sign Out - user will be logged out from current session, returning to initial page.
+ - Edit - Administrator can also edit, delete and create existing tickets and/or comments, add or edit blog entries/comments, change user details.
+ 
 ### Existing Features
+
+- Browsing feature - allows users browse tickets, by type or all at once.
+- Ticket feature - allows users to create, delete their ticket, register and sign in.
+- Voting feature - allows users to upvote existing tickets.
+- Payment feature - allows users to pay for "feature" ticket to help prioritize development.
+- Summary feature - allows user to check who contributed to most tickets and who comments the most.
 
 ### Features Left to Implement
 
