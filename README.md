@@ -84,8 +84,8 @@ Password form field at account details still being displayed even after explicit
     - Used to check python syntax errors.
 - [JSlint](https://www.jslint.com/)
     - Used to check JS snippet.
--  [Faker](https://github.com/joke2k/faker)
-    - Used for generating variety of generic content.
+- [Black](https://black.readthedocs.io/en/stable/)
+    - Used as a Python code formatter.
 - [CSSlint](http://csslint.net/)
     - Check for CSS errors.
 - [Font Awesome](https://fontawesome.com/)
@@ -220,7 +220,7 @@ Web application was also tested by group of users using similar scenarios as men
 
 ## Deployment
 
-The application is deployed to Heroku.
+The application is deployed on [Heroku](https://issue-tracker-pch.herokuapp.com/).
 
 In order to deploy, following changes has been made:
 
