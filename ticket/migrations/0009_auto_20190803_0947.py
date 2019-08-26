@@ -5,33 +5,32 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('ticket', '0008_ticket_pub_date'),
-    ]
+    dependencies = [("ticket", "0008_ticket_pub_date")]
 
     operations = [
         migrations.AlterField(
-            model_name='comment',
-            name='text',
-            field=models.TextField(verbose_name='Comment text'),
+            model_name="comment",
+            name="text",
+            field=models.TextField(verbose_name="Comment text"),
         ),
         migrations.AlterField(
-            model_name='ticket',
-            name='body',
-            field=models.TextField(verbose_name='Description'),
+            model_name="ticket",
+            name="body",
+            field=models.TextField(verbose_name="Description"),
         ),
         migrations.AlterField(
-            model_name='ticket',
-            name='ticket_type',
-            field=models.CharField(choices=[('Bug', 'Bug'),
-                                            ('Feature', 'Feature')],
-                                   default='1',
-                                   max_length=10,
-                                   verbose_name='Ticket type'),
+            model_name="ticket",
+            name="ticket_type",
+            field=models.CharField(
+                choices=[("Bug", "Bug"), ("Feature", "Feature")],
+                default="1",
+                max_length=10,
+                verbose_name="Ticket type",
+            ),
         ),
         migrations.AlterField(
-            model_name='ticket',
-            name='title',
-            field=models.CharField(max_length=50, verbose_name='Title'),
+            model_name="ticket",
+            name="title",
+            field=models.CharField(max_length=50, verbose_name="Title"),
         ),
     ]

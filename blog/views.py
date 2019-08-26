@@ -7,19 +7,19 @@ from users.models import CustomUser
 
 
 def blogs(request):
-    all_blogs = Blog.objects.order_by('pub_date')
-    return render(request, 'blogs.html', {'all_blogs': all_blogs})
+    all_blogs = Blog.objects.order_by("pub_date")
+    return render(request, "blogs.html", {"all_blogs": all_blogs})
 
 
 def single_blog(request, pk):
     blog = Blog.objects.get(pk=pk)
-    comment_list = BlogComment.objects.select_related().filter(
-                   blog_id=pk).order_by('-date')
+    comment_list = (
+        BlogComment.objects.select_related().filter(blog_id=pk).order_by("-date")
+    )
     paginator = Paginator(comment_list, 4)
-    page = request.GET.get('page')
+    page = request.GET.get("page")
     comments = paginator.get_page(page)
-    return render(request, 'single_entry.html',
-                  {'blog': blog, 'comments': comments})
+    return render(request, "single_entry.html", {"blog": blog, "comments": comments})
 
 
 def blog_comment(request, pk):
@@ -34,8 +34,8 @@ def blog_comment(request, pk):
             user = CustomUser.objects.get(username=request.user)
             user.amount_comments += 1
             user.save()
-            messages.success(request, ('Comment added!'))
-            return redirect('single_blog', pk=pk)
+            messages.success(request, ("Comment added!"))
+            return redirect("single_blog", pk=pk)
     else:
         form = BlogCommentForm()
-    return render(request, 'blog_comment.html', {'form': form})
+    return render(request, "blog_comment.html", {"form": form})

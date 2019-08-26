@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('ticket', '0007_ticket_upvotes'),
-    ]
+    dependencies = [("ticket", "0007_ticket_upvotes")]
 
     operations = [
         migrations.AddField(
-            model_name='ticket',
-            name='pub_date',
-            field=models.DateTimeField(default='2001-01-01'),
-        ),
+            model_name="ticket",
+            name="pub_date",
+            field=models.DateTimeField(default="2001-01-01"),
+        )
     ]

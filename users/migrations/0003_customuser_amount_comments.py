@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('users', '0002_customuser_contributions'),
-    ]
+    dependencies = [("users", "0002_customuser_contributions")]
 
     operations = [
         migrations.AddField(
-            model_name='customuser',
-            name='amount_comments',
-            field=models.IntegerField(default='0'),
-        ),
+            model_name="customuser",
+            name="amount_comments",
+            field=models.IntegerField(default="0"),
+        )
     ]

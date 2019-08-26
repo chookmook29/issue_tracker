@@ -4,24 +4,24 @@ from django.conf import settings
 
 class Blog(models.Model):
     author = models.ForeignKey(
-             settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default='1')
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="1"
+    )
     title = models.CharField(max_length=255)
     pub_date = models.DateTimeField(null=True)
     body = models.TextField()
-    image = models.ImageField(upload_to='', default='default.jpg')
+    image = models.ImageField(upload_to="", default="default.jpg")
 
     def __str__(self):
-        return str(self.title) + ' | ' + str(self.pub_date)
+        return str(self.title) + " | " + str(self.pub_date)
 
 
 class BlogComment(models.Model):
     blog = models.ForeignKey(
-             'blog.Blog', on_delete=models.CASCADE,
-             related_name='blog_comments', default='1')
-    author = models.ForeignKey(
-             settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+        "blog.Blog", on_delete=models.CASCADE, related_name="blog_comments", default="1"
+    )
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
-    text = models.TextField(verbose_name='Comment text')
+    text = models.TextField(verbose_name="Comment text")
 
     def __str__(self):
-        return str(self.blog) + ' | ' + str(self.date)
+        return str(self.blog) + " | " + str(self.date)

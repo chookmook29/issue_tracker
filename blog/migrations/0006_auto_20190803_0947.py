@@ -5,19 +5,17 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('blog', '0005_blog_comment'),
-    ]
+    dependencies = [("blog", "0005_blog_comment")]
 
     operations = [
         migrations.AlterField(
-            model_name='blog',
-            name='pub_date',
-            field=models.DateTimeField(default='2001-01-01'),
+            model_name="blog",
+            name="pub_date",
+            field=models.DateTimeField(default="2001-01-01"),
         ),
         migrations.AlterField(
-            model_name='blog_comment',
-            name='text',
-            field=models.TextField(verbose_name='Comment text'),
+            model_name="blog_comment",
+            name="text",
+            field=models.TextField(verbose_name="Comment text"),
         ),
     ]

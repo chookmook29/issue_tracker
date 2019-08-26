@@ -3,7 +3,6 @@ from .models import BlogComment
 
 
 class BlogCommentForm(forms.ModelForm):
-
     class Meta:
         model = BlogComment
-        fields = ('text',)
+        fields = ("text",)

@@ -9,16 +9,17 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('ticket', '0005_auto_20190520_0944'),
+        ("ticket", "0005_auto_20190520_0944"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='ticket',
-            name='author',
-            field=models.ForeignKey(default='1',
-                                    on_delete=django.db.models.
-                                    deletion.CASCADE,
-                                    to=settings.AUTH_USER_MODEL),
-        ),
+            model_name="ticket",
+            name="author",
+            field=models.ForeignKey(
+                default="1",
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
+        )
     ]

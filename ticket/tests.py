@@ -11,13 +11,13 @@ class TicketTestCase(TestCase):
         ticket = Ticket.objects.get(title="test")
         self.assertEqual(ticket.upvotes, 0)
         self.assertEqual(ticket.id, 1)
-        self.assertEqual(ticket.ticket_type, '1')
-        self.assertEqual(ticket.progress, 'To do')
+        self.assertEqual(ticket.ticket_type, "1")
+        self.assertEqual(ticket.progress, "To do")
 
     def test_all_tickets(self):
-        response = self.client.get('/ticket/all_tickets/')
+        response = self.client.get("/ticket/all_tickets/")
         self.assertEqual(response.status_code, 200)
 
     def test_single_ticket(self):
-        response = self.client.get('/ticket/show/1')
+        response = self.client.get("/ticket/show/1")
         self.assertEqual(response.status_code, 200)
